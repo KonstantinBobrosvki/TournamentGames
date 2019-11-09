@@ -1,6 +1,6 @@
 ﻿namespace Pong
 {
-    partial class Form1
+    partial class PongGameField
     {
         /// <summary>
         /// Обязательная переменная конструктора.

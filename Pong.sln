@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "Pong\Pong.csproj", "{0B5FB92E-36AB-4C39-B9D5-35BDDAC43A0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games", "Pong\Games.csproj", "{0B5FB92E-36AB-4C39-B9D5-35BDDAC43A0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TournamentBL", "TournamentBL\TournamentBL.csproj", "{1A800845-9912-42A3-9F15-8F11F19C4452}"
 EndProject
