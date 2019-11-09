@@ -11,7 +11,7 @@ namespace Tests
         static void Main(string[] args)
         {
             var names = new List<string>(10);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 names.Add(RandomString(7));
                 Console.WriteLine(names[i]);
@@ -19,8 +19,21 @@ namespace Tests
             Tournament tournament = new Tournament(names.ToArray());
             tournament.CreateRound();
 
+            Console.WriteLine();
+            var temp = tournament.Rounds[1];
+            foreach (var item in temp)
+            {
+                Console.WriteLine(item.ToString());
+                item.AddPoints(item.PlayerOne.ID);
+                item.AddPoints(item.PlayerOne.ID);
+                item.AddPoints(item.PlayerOne.ID);
+              
 
-            var temp = tournament.Rounds[0];
+            }
+            tournament.FinishRound();
+            tournament.CreateRound();
+            temp = tournament.Rounds[2];
+            Console.WriteLine();
             foreach (var item in temp)
             {
                 Console.WriteLine(item.ToString());
@@ -28,8 +41,8 @@ namespace Tests
                 item.AddPoints(item.PlayerOne.ID);
                 item.AddPoints(item.PlayerOne.ID);
 
-            }
 
+            }
             Console.Read();
          
         }

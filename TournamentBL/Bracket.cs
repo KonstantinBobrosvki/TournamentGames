@@ -80,9 +80,13 @@ namespace TournamentBL
         /// Played at the moment rounds
         /// </summary>
         public int Rounds { get; private set; }
-        #endregion
 
-        private int winnerID=-1;
+        /// <summary>
+        /// ID of the winner.Returns -1 if the match is not finished
+        /// </summary>
+        public int WinnerID { get; private set; } = -1;
+
+        #endregion
 
         public Match(Player player1,Player player2)
         {
@@ -94,11 +98,11 @@ namespace TournamentBL
         /// <summary>
         /// Is match finished
         /// </summary>
-        public bool Finished { get => winnerID != -1; }
+        public bool Finished { get => WinnerID != -1; }
 
         public void AddLog(string log)
         {
-            if (winnerID != -1)
+            if (WinnerID != -1)
                 throw new Exception("Match is over");
             logs.Add(log);
         }
@@ -113,6 +117,7 @@ namespace TournamentBL
         {
             if (Finished)
                 throw new Exception("Game is over");
+
             if(!HavePlayer(playerId))
             {
                 throw new ArgumentException("The player is not existing");
@@ -130,12 +135,12 @@ namespace TournamentBL
 
             if (WonRoundP1 == MaxRoundsCount / 2 + 1)
             {
-                winnerID = PlayerOne.ID;
+                WinnerID = PlayerOne.ID;
                 WinEvent?.Invoke(this, new WinEventArgs(PlayerOne, PlayerTwo, this));
             }
             else if (WonRoundP2 == MaxRoundsCount / 2 + 1)
             {
-                winnerID = PlayerTwo.ID;
+                WinnerID = PlayerTwo.ID;
                 WinEvent?.Invoke(this, new WinEventArgs(PlayerTwo, PlayerOne, this));
             }
             

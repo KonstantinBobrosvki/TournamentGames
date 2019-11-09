@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace TournamentBL
 {
+
     public class Tournament
     {
+        /// <summary>
+        /// All resgistred Players
+        /// </summary>
         public List<Player> AllPlayers { get; private set; } 
+        /// <summary>
+        /// All rounds
+        /// </summary>
         public List<Match[]> Rounds { get; private set; }
+        /// <summary>
+        /// Number of current round
+        /// </summary>
         public int CurrentRound { get; private set; } = 0;
-
+       
+        /// <summary>
+        /// Players in current round
+        /// </summary>
         public List<Player> CurrentRoundPlayers { get; private set; }
 
         public Tournament(string[] names)
@@ -19,6 +32,7 @@ namespace TournamentBL
             AllPlayers = new List<Player>(names.Length);
             Rounds = new List<Match[]>(4);
             CurrentRoundPlayers = new List<Player>();
+            Rounds.Add( new Match[0]);
             for (int i = 0; i < names.Length; i++)
             {
                 var item = names[i];
@@ -28,44 +42,41 @@ namespace TournamentBL
         }
         public void CreateRound()
         {
-            if(AllPlayers.Count%2==0)
+
+            CurrentRound++;
+
+            if (Rounds[CurrentRound - 1].Select((p) => p.Finished).Where((p)=>p).Count() != Rounds[CurrentRound - 1].Length)
+                    throw new Exception("Current round is not finished");
+           
+
+               
+                
+
+            if(CurrentRoundPlayers.Count%2==0)
             {              
                 Random random = new Random();
                
                 HashSet<int> allUsedPlayersId = new HashSet<int>();
-                CurrentRound++;
                 Rounds.Add(new Match[CurrentRoundPlayers.Count/2]);
                 var roind = 0;
-                for (int i = 0; i < CurrentRoundPlayers.Count-1; i++)
+                for (int i = 0; i < CurrentRoundPlayers.Count; i++)
                 {
-                    int secondPlayerId = random.Next(i+1, CurrentRoundPlayers.Count);
+                    int secondPlayerIndex = random.Next(i+1, CurrentRoundPlayers.Count);
 
                     if (allUsedPlayersId.Contains(i))
                         continue;
                     
                     allUsedPlayersId.Add(i);
-                    while (allUsedPlayersId.Contains(secondPlayerId) || secondPlayerId==i)
+                    while (allUsedPlayersId.Contains(secondPlayerIndex) || secondPlayerIndex==i)
                     {
-                         secondPlayerId = random.Next(i+1, CurrentRoundPlayers.Count);                      
+                         secondPlayerIndex = random.Next(i+1, CurrentRoundPlayers.Count);                      
                     }
-                    allUsedPlayersId.Add(secondPlayerId);
+                    allUsedPlayersId.Add(secondPlayerIndex);
 
-                    foreach (var item in Rounds[CurrentRound - 1])
-                    {
-                        if (item is null)
-                            continue;
-                        if(item.PlayerOne.ID==i||item.PlayerTwo.ID==secondPlayerId)
-                        {
-                            var f = -1;
-                        }
-                        if (item.PlayerOne.ID == secondPlayerId || item.PlayerTwo.ID == i)
-                        {
-                            var f = -1;
-                        }
-                    }
-                    var p1 = CurrentRoundPlayers.Where((p) => p.ID == i).First();
-                    var p2 = CurrentRoundPlayers.Where((p) => p.ID == secondPlayerId).First();
-                    Rounds[CurrentRound-1][roind++] = new Match(p1, p2); 
+                  
+                    var p1 = CurrentRoundPlayers[i];
+                    var p2 = CurrentRoundPlayers[secondPlayerIndex];
+                    Rounds[CurrentRound][roind++] = new Match(p1, p2); 
 
 
 
@@ -77,5 +88,25 @@ namespace TournamentBL
 
             }
         }
+
+        public void FinishRound()
+        {
+            if (Rounds[CurrentRound].Select((p) => p.Finished).Where((p) => p).Count() != Rounds[CurrentRound].Length)
+                throw new Exception("Current round matchs are not finished");
+            CurrentRoundPlayers = new List<Player>();
+            foreach (var item in Rounds[CurrentRound])
+            {
+                if(item.WinnerID==item.PlayerOne.ID)
+                {
+                    CurrentRoundPlayers.Add(item.PlayerOne);
+                }
+                else
+                {
+                    CurrentRoundPlayers.Add(item.PlayerTwo);
+
+                }
+            }
+        }
+
     }
 }
