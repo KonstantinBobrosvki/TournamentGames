@@ -29,12 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.MainGameLoopTimer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // MainGameLoopTimer
+            // 
+            this.MainGameLoopTimer.Enabled = true;
+            this.MainGameLoopTimer.Interval = 25;
+            this.MainGameLoopTimer.Tick += new System.EventHandler(this.MainGameLoopTimer_Tick);
+            // 
+            // PongGameField
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "PongGameField";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PongGameField_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PongGameField_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PongGameField_KeyUp);
+            this.Resize += new System.EventHandler(this.PongGameField_Resize);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer MainGameLoopTimer;
     }
 }
 

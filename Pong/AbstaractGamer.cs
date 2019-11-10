@@ -14,29 +14,33 @@ namespace Pong
         public abstract Image BackGround { get;  }
         public int SpeedX { get; protected set; }
         public int SpeedY { get; protected set; }
-        public PictureBox Hero { get; protected set; }
+        public Image Hero { get; protected set; }
         public Player Account { get; }
+        public Point Position { get; protected set; }
 
-        public AbstaractGamer(PictureBox box,Player mainAccount )
+        public AbstaractGamer(Image box,Player mainAccount )
         {
             Hero = box;
+            Account = mainAccount;
         }
 
         public virtual void MoveUp()
         {
-            Hero.Location = new Point(Hero.Location.X, Hero.Location.Y - SpeedY);
+           Position= new Point(Position.X, Position.Y - SpeedY);
         }
         public virtual void MoveDown()
         {
-            Hero.Location = new Point(Hero.Location.X, Hero.Location.Y + SpeedY);
+           Position= new Point(Position.X, Position.Y + SpeedY);
+           
         }
         public virtual void MoveLeft()
         {
-            Hero.Location = new Point(Hero.Location.X+SpeedX, Hero.Location.Y );
+            Position = new Point(Position.X-SpeedX, Position.Y );
         }
         public virtual void MoveRight()
         {
-            Hero.Location = new Point(Hero.Location.X + SpeedX, Hero.Location.Y);
+            Position = new Point(Position.X-SpeedX, Position.Y);
         }
+
     }
 }
