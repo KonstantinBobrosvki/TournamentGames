@@ -160,11 +160,29 @@ namespace Pong
                 item.Move();
                 if (p1Rect.Contains(Interactables[0].Location) || p1Rect.Contains(item.Location.X, item.Location.Y + item.Skin.Height))
                 {
-                    item.OnColision(Player1, Player2);
+                    if (item.Location.X  + item.SpeedX < p2Rect.X+p2Rect.Width)
+                    {
+                        item.OnColision();
+                    }
+                    else
+                    {
+                        item.OnColision(Player1, Player2);
+
+                    }
+
                 }
                 else if (p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y) || p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y + item.Skin.Height))
                 {
-                    item.OnColision(Player2, Player1);
+                    if (item.Location.X + item.Skin.Width - item.SpeedX>p2Rect.X)
+                    {
+                        item.OnColision();
+                    }
+                    else
+                    {
+                        item.OnColision(Player2, Player1);
+
+                    }
+
                 }
 
                 if (item.Location.Y <= 0)
@@ -206,7 +224,7 @@ namespace Pong
             propertyInfo.SetValue(Player1, Convert.ChangeType(new Point(50, this.Height / 2 - Player2.Hero.Height / 2), propertyInfo.PropertyType), null);
 
             Interactables.Clear();
-            Interactables.Add(new Ball(new Point(this.Width / 2, this.Height / 2)));
+            Interactables.Add(new Ball(new Point(this.Width/2, this.Height / 2)));
            
         }
 

@@ -34,13 +34,16 @@ namespace Pong
             Graphics g = Graphics.FromImage(image);
             g.FillEllipse(new SolidBrush(Color.FromArgb(255, 255, 255)), 0, 0, 80, 80);
 
+            //TODO: Remove coments aftre testings
+
             Random random = new Random();
             var temp = random.Next(-15, 15);
-            while(temp>-8&&temp<8)
+            while (temp > -8 && temp < 8)
                 temp = random.Next(-15, 15);
             SpeedX = temp;
             temp = random.Next(-10, 10);
             SpeedY = temp == 0 ? 7 : temp;
+            
 
             Skin = image;
 
