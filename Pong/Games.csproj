@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstaractGamer.cs" />
+    <Compile Include="Ball.cs" />
+    <Compile Include="Interactable.cs" />
     <Compile Include="PlayerInPong.cs" />
     <Compile Include="PongGameField.cs">
       <SubType>Form</SubType>

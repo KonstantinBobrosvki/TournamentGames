@@ -47,7 +47,7 @@ namespace TournamentBL
             private set
             {
                 if (value < 0 || value > MaxRoundsCount / 2 + 1)
-                    throw new ArgumentOutOfRangeException("Value is correct");
+                    throw new ArgumentOutOfRangeException("Value is incorrect");
                 wonRoundP1 = value;
                 PlayerOne.WinsRounds++;
                 PlayerTwo.LoseRounds++;
@@ -70,7 +70,7 @@ namespace TournamentBL
                 wonRoundP2 = value;
                 PlayerTwo.WinsRounds++;
                 PlayerOne.LoseRounds++;
-                WinRoundEvent?.Invoke(this, new WinnedRoundEventArgs(PlayerTwo, WonRoundP1, PlayerOne));
+                WinRoundEvent?.Invoke(this, new WinnedRoundEventArgs(PlayerTwo, WonRoundP2, PlayerOne));
 
             }
         }

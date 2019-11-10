@@ -16,6 +16,9 @@ namespace Pong
         AbstaractGamer Player2;
         const int PlayerWidth = 80;
         const int PlayerHeight = 120;
+        List<Interactable> Interactables = new List<Interactable>(3);
+        public Match CurrentMatch { get; }
+
 
         public PongGameField(Match match)
         {
@@ -25,13 +28,57 @@ namespace Pong
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             InitializeComponent();
+
             Player1 = new PlayerInPongController(CreateRGBImage(50,60,14), match.PlayerOne);
             Player2 = new PlayerInPongController(CreateRGBImage(128, 128, 128), match.PlayerTwo);
+
+            CurrentMatch = match;
+            match.WinRoundEvent += Match_WinRoundEvent;
+            P2ScoreLabel.BackColor = Color.FromArgb(1, 255, 255, 255);
+            P1ScoreLabel.BackColor = Color.FromArgb(1, 255, 255, 255);
+
             this.DoubleBuffered = true;
             CombineBackgrounds();
 
+            match.WinEvent += Match_WinEvent;
+
+           
+        }
+
+        private void Match_WinEvent(object sender, WinEventArgs e)
+        {
+            MainGameLoopTimer.Enabled = false;
+            this.Refresh();
+            if (e.Winner.Equals(Player1.Account))
+            {
+                P1ScoreLabel.Text = Player1.Account.Name + " won ";
+                this.CreateGraphics().DrawString(Player1.Account.Name + " is Winner", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 0, 0)), this.Width / 2 - 100, this.Height / 2 - 50);
+            }
+            else
+            {
+                P2ScoreLabel.Text = Player2.Account.Name + " won";
+                this.CreateGraphics().DrawString(Player2.Account.Name +  " is Winner", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 0, 0)), this.Width / 2 - 100, this.Height / 2 - 50);
+            }
+            System.Threading.Thread.Sleep(1000);
 
         }
+
+        private void Match_WinRoundEvent(object sender, WinnedRoundEventArgs e)
+        {
+            if(e.WinnerOfRound.Equals(Player1.Account))
+            {
+                P1ScoreLabel.Text = Player1.Account.Name + " won in " + e.WinnedRounds + " rounds";
+                this.CreateGraphics().DrawString(Player1.Account.Name + " Scores", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 255, 255)), this.Width / 2 - 100, this.Height / 2 - 50);
+            }
+            else
+            {
+                P2ScoreLabel.Text = Player2.Account.Name + " won in " + e.WinnedRounds +" rounds";
+                this.CreateGraphics().DrawString(Player2.Account.Name + "Scores", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 255, 255)), this.Width / 2 - 100, this.Height / 2 - 50);
+            }
+                System.Threading.Thread.Sleep(500);
+
+        }
+
         Image CreateRGBImage(int r,int g,int b)
         {
             Bitmap flag = new Bitmap(PlayerWidth,PlayerHeight);
@@ -43,6 +90,7 @@ namespace Pong
             return flag;
         }
 
+
         private void CombineBackgrounds()
         {
             Bitmap flag = new Bitmap(Player2.BackGround.Width + Player1.BackGround.Width, (Player1.BackGround.Height + Player2.BackGround.Height) / 2);
@@ -53,11 +101,6 @@ namespace Pong
             flagGraphics.DrawImage(Player2.BackGround, new Rectangle(Player1.BackGround.Width, 0, Player2.BackGround.Width, (Player1.BackGround.Height + Player2.BackGround.Height) / 2));
 
             this.BackgroundImage = flag;
-        }
-
-        private void PongGameField_KeyUp(object sender, KeyEventArgs e)
-        {
-
         }
 
         private void PongGameField_KeyDown(object sender, KeyEventArgs e)
@@ -81,7 +124,7 @@ namespace Pong
             if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Right))
                 Player2.MoveRight();
             
-
+            
         }
 
         private void PongGameField_Paint(object sender, PaintEventArgs e)
@@ -90,11 +133,67 @@ namespace Pong
             graphics.DrawImage(Player1.Hero, Player1.Position);
             graphics.DrawImage(Player2.Hero, Player2.Position);
 
+            foreach (var item in Interactables)
+            {
+                graphics.DrawImage(item.Skin, item.Location);
+
+            }
         }
 
         private void MainGameLoopTimer_Tick(object sender, EventArgs e)
         {
             this.Refresh();
+            CheckColisions();
+        }
+
+        private void CheckColisions()
+        {
+            var balls = Interactables.Where((p)=>p is Ball).ToList();
+            
+            var p1Rect = new Rectangle(Player1.Position, Player1.Hero.Size);
+            var p2Rect = new Rectangle(Player2.Position, Player2.Hero.Size);
+
+
+            for (int i = 0; i < balls.Count; i++)
+            {
+                var item = balls[i];
+                item.Move();
+                if (p1Rect.Contains(Interactables[0].Location) || p1Rect.Contains(item.Location.X, item.Location.Y + item.Skin.Height))
+                {
+                    item.OnColision(Player1, Player2);
+                }
+                else if (p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y) || p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y + item.Skin.Height))
+                {
+                    item.OnColision(Player2, Player1);
+                }
+
+                if (item.Location.Y <= 0)
+                    item.OnColision();
+                else if (item.Location.Y >= Screen.PrimaryScreen.WorkingArea.Height)
+                    item.OnColision();
+
+                if (item.Location.X <= 0)
+                {
+                    CurrentMatch.AddPoints(Player2.Account.ID);
+
+                    PongGameField_Resize(null, null);
+                    break;
+
+                }
+                else if (item.Location.X + item.Skin.Width >= this.Width)
+                {
+                    CurrentMatch.AddPoints(Player1.Account.ID);
+
+                    PongGameField_Resize(null, null);
+                    break;
+                }
+            }
+                   
+                
+           
+         
+           
+
         }
 
         private void PongGameField_Resize(object sender, EventArgs e)
@@ -104,7 +203,12 @@ namespace Pong
             propertyInfo.SetValue(Player2, Convert.ChangeType(new Point(this.Width - 100, this.Height / 2-Player2.Hero.Height/2), propertyInfo.PropertyType), null);
 
             propertyInfo = Player1.GetType().GetProperty("Position");
-            propertyInfo.SetValue(Player1, Convert.ChangeType(new Point(50, this.Height / 2 - Player1.Hero.Height/2), propertyInfo.PropertyType), null);
+            propertyInfo.SetValue(Player1, Convert.ChangeType(new Point(50, this.Height / 2 - Player2.Hero.Height / 2), propertyInfo.PropertyType), null);
+
+            Interactables.Clear();
+            Interactables.Add(new Ball(new Point(this.Width / 2, this.Height / 2)));
+           
         }
+
     }
 }

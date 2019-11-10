@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using TournamentBL;
+using System.Threading;
 
 namespace Pong
 {
@@ -42,5 +43,18 @@ namespace Pong
             Position = new Point(Position.X-SpeedX, Position.Y);
         }
 
+      
+
+        /// <summary>
+        /// New size for image
+        /// </summary>
+        /// <param name="size">Size</param>
+        public void ChangeSize(Size size)
+        {
+            var standart = Hero.Size;
+            Hero = new Bitmap(Hero, size);
+            
+          
+        }
     }
 }

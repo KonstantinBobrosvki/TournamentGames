@@ -64,5 +64,22 @@ namespace TournamentBL
             Name = name;
             this.ID = Player.Id++;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null || !(obj is Player))
+                return false;
+            return ((Player)obj).ID == ID;
+        }
+
+        public override int GetHashCode()
+        {
+            return ID;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
