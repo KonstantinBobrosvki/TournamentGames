@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AbstaractGamer.cs" />
     <Compile Include="Ball.cs" />
+    <Compile Include="Bonuses.cs" />
     <Compile Include="Interactable.cs" />
     <Compile Include="PlayerInPong.cs" />
     <Compile Include="PongGameField.cs">

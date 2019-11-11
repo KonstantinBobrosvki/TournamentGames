@@ -34,7 +34,7 @@ namespace Pong
 
         public PlayerInPongController(Image box, Player player) : base(box, player)
         {
-            SpeedY = 10;
+            SpeedY = 20;
         }
 
        

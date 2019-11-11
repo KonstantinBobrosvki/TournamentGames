@@ -51,7 +51,7 @@ namespace Pong
         /// <param name="size">Size</param>
         public void ChangeSize(Size size)
         {
-            var standart = Hero.Size;
+            
             Hero = new Bitmap(Hero, size);
             
           

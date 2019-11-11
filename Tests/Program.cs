@@ -1,50 +1,53 @@
-﻿using System;
+﻿using Pong;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TournamentBL;
+
 namespace Tests
 {
+  
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-            var names = new List<string>(10);
-            for (int i = 0; i < 20; i++)
+            var names = new List<string>(4);
+            while (true)
             {
-                names.Add(RandomString(7));
-                Console.WriteLine(names[i]);
+                string name = Console.ReadLine();
+                if (String.IsNullOrWhiteSpace(name))
+                    break;
+                names.Add(name);
             }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Tournament tournament = new Tournament(names.ToArray());
             tournament.CreateRound();
-
-            Console.WriteLine();
-            var temp = tournament.Rounds[1];
-            foreach (var item in temp)
+            foreach (var item in tournament.Rounds[tournament.CurrentRound])
             {
                 Console.WriteLine(item.ToString());
-                item.AddPoints(item.PlayerOne.ID);
-                item.AddPoints(item.PlayerOne.ID);
-                item.AddPoints(item.PlayerOne.ID);
+            }
+            Console.ReadLine();
+
+            foreach (var item in tournament.Rounds[tournament.CurrentRound])
+            {
+                var ttt = new PongGameField(item);
+                item.WinEvent += (w, s) => {
+                    Console.WriteLine(s.Winner.Name + " wins");
+                    
+                    ttt.Close();
+
+                };
               
+                Application.Run(ttt);
 
+               
             }
-            tournament.FinishRound();
-            tournament.CreateRound();
-            temp = tournament.Rounds[2];
-            Console.WriteLine();
-            foreach (var item in temp)
-            {
-                Console.WriteLine(item.ToString());
-                item.AddPoints(item.PlayerOne.ID);
-                item.AddPoints(item.PlayerOne.ID);
-                item.AddPoints(item.PlayerOne.ID);
 
-
-            }
-            Console.Read();
-         
         }
 
         public static string RandomString(int length)

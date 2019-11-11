@@ -14,6 +14,7 @@ namespace Pong
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new PongGameField(new TournamentBL.Match(new TournamentBL.Player("F"),new TournamentBL.Player("FFF"))));

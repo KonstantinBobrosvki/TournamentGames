@@ -15,15 +15,17 @@ namespace Pong
         AbstaractGamer Player1;
         AbstaractGamer Player2;
         const int PlayerWidth = 80;
-        const int PlayerHeight = 120;
+        const int PlayerHeight = 220;
         List<Interactable> Interactables = new List<Interactable>(3);
+
         public Match CurrentMatch { get; }
+
 
 
         public PongGameField(Match match)
         {
-           
             
+           
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -34,15 +36,40 @@ namespace Pong
 
             CurrentMatch = match;
             match.WinRoundEvent += Match_WinRoundEvent;
+            match.AddLog("START");
+
             P2ScoreLabel.BackColor = Color.FromArgb(1, 255, 255, 255);
             P1ScoreLabel.BackColor = Color.FromArgb(1, 255, 255, 255);
+
 
             this.DoubleBuffered = true;
             CombineBackgrounds();
 
             match.WinEvent += Match_WinEvent;
 
+            Timer timer = new Timer();
+            timer.Tick += BonusTimerTIck;
+
+            timer.Interval = 10000;
+            timer.Start();
            
+        }
+
+        private void BonusTimerTIck(object sender,EventArgs e)
+        {
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+            var x = random.Next(Screen.PrimaryScreen.WorkingArea.Width / 3, Screen.PrimaryScreen.WorkingArea.Width / 3 * 2);
+            var y = random.Next(100, Screen.PrimaryScreen.WorkingArea.Height -100);
+            Interactable bonus = null ;
+            if(random.Next(0,2)==0)
+            {
+                bonus = new SmallerBonus(new Point(x, y));
+            }
+            else
+            {
+                bonus = new BiggerBonus(new Point(x, y));
+            }
+            Interactables.Add(bonus);
         }
 
         private void Match_WinEvent(object sender, WinEventArgs e)
@@ -59,7 +86,7 @@ namespace Pong
                 P2ScoreLabel.Text = Player2.Account.Name + " won";
                 this.CreateGraphics().DrawString(Player2.Account.Name +  " is Winner", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 0, 0)), this.Width / 2 - 100, this.Height / 2 - 50);
             }
-            System.Threading.Thread.Sleep(1000);
+         
 
         }
 
@@ -142,76 +169,115 @@ namespace Pong
 
         private void MainGameLoopTimer_Tick(object sender, EventArgs e)
         {
+          
             this.Refresh();
             CheckColisions();
+
         }
 
         private void CheckColisions()
         {
-            var balls = Interactables.Where((p)=>p is Ball).ToList();
+            var ball = Interactables.Where((p)=>p is Ball).First();
             
             var p1Rect = new Rectangle(Player1.Position, Player1.Hero.Size);
             var p2Rect = new Rectangle(Player2.Position, Player2.Hero.Size);
 
+            ball.Move();
+            
+        
 
-            for (int i = 0; i < balls.Count; i++)
+            for (int i = 0; i < Interactables.Count; i++)
             {
-                var item = balls[i];
-                item.Move();
-                if (p1Rect.Contains(Interactables[0].Location) || p1Rect.Contains(item.Location.X, item.Location.Y + item.Skin.Height))
+                var temp = Interactables[i];
+                if (temp is Ball)
+                    continue;
+                var tempBounds = new Rectangle(temp.Location, temp.Skin.Size);
+                var points = FourAngles(new Rectangle(ball.Location, ball.Skin.Size));
+                if(tempBounds.Contains(points[0])|| tempBounds.Contains(points[1]) || tempBounds.Contains(points[2]) || tempBounds.Contains(points[3]))
                 {
-                    if (item.Location.X  + item.SpeedX < p2Rect.X+p2Rect.Width)
+                    if(ball.SpeedX<0)
                     {
-                        item.OnColision();
+                        temp.OnColision(Player2, Player1);
                     }
                     else
                     {
-                        item.OnColision(Player1, Player2);
+                        temp.OnColision(Player1, Player2);
+
+                    }
+                    Interactables.RemoveAt(i);
+                    i--;
+                }  
+            }
+
+
+                if (p1Rect.Contains(ball.Location) || p1Rect.Contains(ball.Location.X, ball.Location.Y + ball.Skin.Height))
+                {
+                    if (ball.Location.X  - ball.SpeedX < p1Rect.X+p1Rect.Width)
+                    {
+                    ball.OnColision();
+                    }
+                    else
+                    {
+                    ball.OnColision(Player1, Player2);
 
                     }
 
                 }
-                else if (p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y) || p2Rect.Contains(item.Location.X + item.Skin.Width, item.Location.Y + item.Skin.Height))
+                else if (p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y) || p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y + ball.Skin.Height))
                 {
-                    if (item.Location.X + item.Skin.Width - item.SpeedX>p2Rect.X)
+                    if (ball.Location.X + ball.Skin.Width - ball.SpeedX>p2Rect.X)
                     {
-                        item.OnColision();
+                    ball.OnColision();
                     }
                     else
                     {
-                        item.OnColision(Player2, Player1);
+                    ball.OnColision(Player2, Player1);
 
                     }
 
                 }
 
-                if (item.Location.Y <= 0)
-                    item.OnColision();
-                else if (item.Location.Y >= Screen.PrimaryScreen.WorkingArea.Height)
-                    item.OnColision();
+                if (ball.Location.Y <= 0)
+                ball.OnColision();
+                else if (ball.Location.Y >= Screen.PrimaryScreen.WorkingArea.Height)
+                ball.OnColision();
 
-                if (item.Location.X <= 0)
+                if (ball.Location.X <= 0)
                 {
                     CurrentMatch.AddPoints(Player2.Account.ID);
+                    NewRound();
 
                     PongGameField_Resize(null, null);
-                    break;
+                    return;
 
                 }
-                else if (item.Location.X + item.Skin.Width >= this.Width)
+                else if (ball.Location.X + ball.Skin.Width >= this.Width)
                 {
                     CurrentMatch.AddPoints(Player1.Account.ID);
 
-                    PongGameField_Resize(null, null);
-                    break;
+                    NewRound();
+                    return;
                 }
-            }
+           
                    
                 
            
          
            
 
+        }
+
+        private void NewRound()
+        {
+            System.Reflection.PropertyInfo propertyInfo = Player2.GetType().GetProperty("Position");
+            propertyInfo.SetValue(Player2, Convert.ChangeType(new Point(this.Width - 100, this.Height / 2 - Player2.Hero.Height / 2), propertyInfo.PropertyType), null);
+
+            propertyInfo = Player1.GetType().GetProperty("Position");
+            propertyInfo.SetValue(Player1, Convert.ChangeType(new Point(50, this.Height / 2 - Player2.Hero.Height / 2), propertyInfo.PropertyType), null);
+            
+
+            Interactables.Clear();
+            Interactables.Add(new Ball(new Point(this.Width / 2, this.Height / 2)));
         }
 
         private void PongGameField_Resize(object sender, EventArgs e)
@@ -226,6 +292,23 @@ namespace Pong
             Interactables.Clear();
             Interactables.Add(new Ball(new Point(this.Width/2, this.Height / 2)));
            
+        }
+
+
+        /// <summary>
+        /// Returns 4 points of rect.0 is Top left 3 is Bot right
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <returns></returns>
+        private Point[] FourAngles(Rectangle rect)
+        {
+            var res = new Point[4];
+            res[0] = rect.Location;
+            res[1] = new Point(rect.Location.X + rect.Width, rect.Location.Y);
+            res[2] = new Point(rect.Location.X, rect.Location.Y + rect.Height);
+            res[3] = new Point(rect.Location.X + rect.Width, rect.Location.Y + rect.Height);
+
+            return res;
         }
 
     }
