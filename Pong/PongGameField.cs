@@ -86,7 +86,7 @@ namespace Pong
                 P2ScoreLabel.Text = Player2.Account.Name + " won";
                 this.CreateGraphics().DrawString(Player2.Account.Name +  " is Winner", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 0, 0)), this.Width / 2 - 100, this.Height / 2 - 50);
             }
-         
+            System.Threading.Thread.Sleep(6000);
 
         }
 
