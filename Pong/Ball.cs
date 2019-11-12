@@ -27,7 +27,6 @@ namespace Pong
             
             SpeedY =  SpeedY * -12 / 10;
         }
-
         public Ball(Point p):base(p)
         {
             var image = new Bitmap(80, 80);
