@@ -68,6 +68,7 @@
             this.Controls.Add(this.P1ScoreLabel);
             this.Name = "PongGameField";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.PongGameField_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.PongGameField_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PongGameField_KeyDown);
             this.Resize += new System.EventHandler(this.PongGameField_Resize);

@@ -47,11 +47,6 @@ namespace TournamentBL
 
             if (Rounds[CurrentRound - 1].Select((p) => p.Finished).Where((p)=>p).Count() != Rounds[CurrentRound - 1].Length)
                     throw new Exception("Current round is not finished");
-           
-
-               
-                
-
             if(CurrentRoundPlayers.Count%2==0)
             {              
                 Random random = new Random();
@@ -77,9 +72,6 @@ namespace TournamentBL
                     var p1 = CurrentRoundPlayers[i];
                     var p2 = CurrentRoundPlayers[secondPlayerIndex];
                     Rounds[CurrentRound][roind++] = new Match(p1, p2); 
-
-
-
                 }
                 
             }
