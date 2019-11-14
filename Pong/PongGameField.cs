@@ -177,6 +177,7 @@ namespace Pong
 
         private void CheckColisions()
         {
+            
             var ball = Interactables.Where((p)=>p is Ball).First();
             
             var p1Rect = new Rectangle(Player1.Position, Player1.Hero.Size);
@@ -239,7 +240,7 @@ namespace Pong
 
                 if (ball.Location.Y <= 0)
                 ball.OnColision();
-                else if (ball.Location.Y >= Screen.PrimaryScreen.WorkingArea.Height)
+                else if (ball.Location.Y >= Height)
                 ball.OnColision();
 
                 if (ball.Location.X <= 0)
