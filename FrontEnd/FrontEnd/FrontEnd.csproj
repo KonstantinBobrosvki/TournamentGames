@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Pong">
-      <HintPath>..\..\..\..\Desktop\TournamentGames-master\Pong\bin\Debug\Pong.exe</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\TournamentGames-master\Pong\bin\Debug\Pong.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,7 +48,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TournamentBL">
-      <HintPath>..\..\..\..\Desktop\TournamentGames-master\TournamentBL\bin\Debug\TournamentBL.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\TournamentGames-master\Pong\bin\Debug\TournamentBL.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
