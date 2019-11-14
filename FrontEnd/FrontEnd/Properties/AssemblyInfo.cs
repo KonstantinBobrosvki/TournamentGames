@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("nasko")]
+[assembly: AssemblyTitle("FrontEnd")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("nasko")]
+[assembly: AssemblyProduct("FrontEnd")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bb09d76e-a8a4-47f8-8fd8-6d61a82b0ad2")]
+[assembly: Guid("f7bd0ddf-a85d-43a0-9e2f-6fcdc7f98dd7")]
 
 // Version information for an assembly consists of the following four values:
 //

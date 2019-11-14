@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace nasko
+namespace FrontEnd
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace nasko
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sheme());
+            Application.Run(new Form1());
         }
     }
 }

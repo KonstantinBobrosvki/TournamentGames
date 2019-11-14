@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace nasko.Properties
+namespace FrontEnd.Properties
 {
 
 

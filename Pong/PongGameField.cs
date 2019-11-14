@@ -312,5 +312,9 @@ namespace Pong
             return res;
         }
 
+        private void PongGameField_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
