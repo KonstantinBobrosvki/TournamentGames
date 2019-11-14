@@ -14,7 +14,7 @@ namespace Pong
         private Image skin;
         public override void OnColision(AbstaractGamer gamer, AbstaractGamer otherGamer)
         {
-            var last = gamer.Hero.Size;
+         
             gamer.ChangeSize(new Size(gamer.Hero.Size.Width, gamer.Hero.Height - 100));
             Timer timer = new Timer
             {
@@ -22,7 +22,7 @@ namespace Pong
             };
             timer.Start();
             timer.Tick += (s, e) => {
-                gamer.ChangeSize(last);
+                gamer.ChangeSize(new Size(gamer.Hero.Size.Width, gamer.Hero.Height + 100));
                 timer.Stop();
                 timer.Dispose();
             };
@@ -51,7 +51,7 @@ namespace Pong
         private Image skin;
         public override void OnColision(AbstaractGamer gamer, AbstaractGamer otherGamer)
         {
-            var last = otherGamer.Hero.Size;
+           
             gamer.ChangeSize(new Size(gamer.Hero.Size.Width, gamer.Hero.Height + 100));
             Timer timer = new Timer
             {
@@ -59,7 +59,7 @@ namespace Pong
             };
             timer.Start();
             timer.Tick += (s, e) => {
-                gamer.ChangeSize(last);
+                gamer.ChangeSize(new Size(gamer.Hero.Size.Width, gamer.Hero.Height - 100));
                 timer.Stop();
                 timer.Dispose();
             };

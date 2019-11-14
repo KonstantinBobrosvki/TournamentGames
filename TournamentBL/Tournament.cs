@@ -27,6 +27,13 @@ namespace TournamentBL
         /// </summary>
         public List<Player> CurrentRoundPlayers { get; private set; }
 
+        public bool Finished { get; private set; }
+
+        public event EventHandler RoundFinishedEvent;
+
+        public event EventHandler TournamentFinishedEvent;
+
+
         public Tournament(string[] names)
         {
             AllPlayers = new List<Player>(names.Length);
@@ -40,6 +47,9 @@ namespace TournamentBL
                 CurrentRoundPlayers.Add(AllPlayers[i]);
             }
         }
+
+        
+
         public void CreateRound()
         {
 
@@ -47,53 +57,52 @@ namespace TournamentBL
 
             if (Rounds[CurrentRound - 1].Select((p) => p.Finished).Where((p)=>p).Count() != Rounds[CurrentRound - 1].Length)
                     throw new Exception("Current round is not finished");
-           
 
-               
-                
 
-            if(CurrentRoundPlayers.Count%2==0)
-            {              
+
+
+
+            if (CurrentRoundPlayers.Count % 2 == 0)
+            {
                 Random random = new Random();
-               
+
                 HashSet<int> allUsedPlayersId = new HashSet<int>();
-                Rounds.Add(new Match[CurrentRoundPlayers.Count/2]);
+                Rounds.Add(new Match[CurrentRoundPlayers.Count / 2]);
                 var roind = 0;
                 for (int i = 0; i < CurrentRoundPlayers.Count; i++)
                 {
-                    int secondPlayerIndex = random.Next(i+1, CurrentRoundPlayers.Count);
+                    int secondPlayerIndex = random.Next(i + 1, CurrentRoundPlayers.Count);
 
                     if (allUsedPlayersId.Contains(i))
                         continue;
-                    
+
                     allUsedPlayersId.Add(i);
-                    while (allUsedPlayersId.Contains(secondPlayerIndex) || secondPlayerIndex==i)
+                    while (allUsedPlayersId.Contains(secondPlayerIndex) || secondPlayerIndex == i)
                     {
-                         secondPlayerIndex = random.Next(i+1, CurrentRoundPlayers.Count);                      
+                        secondPlayerIndex = random.Next(i + 1, CurrentRoundPlayers.Count);
                     }
                     allUsedPlayersId.Add(secondPlayerIndex);
 
-                  
+
                     var p1 = CurrentRoundPlayers[i];
                     var p2 = CurrentRoundPlayers[secondPlayerIndex];
-                    Rounds[CurrentRound][roind++] = new Match(p1, p2); 
-
+                    var match = new Match(p1, p2);
+                    Rounds[CurrentRound][roind++] = match;
+                    match.WinEvent += MatchFinished;
 
 
                 }
-                
-            }
-            else
-            {
 
             }
+            else
+                throw new Exception("Must be even");
         }
 
         public void FinishRound()
         {
             if (Rounds[CurrentRound].Select((p) => p.Finished).Where((p) => p).Count() != Rounds[CurrentRound].Length)
                 throw new Exception("Current round matchs are not finished");
-            CurrentRoundPlayers = new List<Player>();
+            CurrentRoundPlayers = new List<Player>(Rounds[CurrentRound].Length);
             foreach (var item in Rounds[CurrentRound])
             {
                 if(item.WinnerID==item.PlayerOne.ID)
@@ -106,6 +115,21 @@ namespace TournamentBL
 
                 }
             }
+        }
+
+        private void MatchFinished(object sender,EventArgs e)
+        {
+            foreach (var item in Rounds[CurrentRound])
+            {
+                if (!item.Finished)
+                    return;
+            }
+
+            if (Rounds[CurrentRound].Length == 1)
+                TournamentFinishedEvent?.Invoke(this, new EventArgs());
+            else
+            RoundFinishedEvent?.Invoke(this, new EventArgs());
+
         }
 
     }
