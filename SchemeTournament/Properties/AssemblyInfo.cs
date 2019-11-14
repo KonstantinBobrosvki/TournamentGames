@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TEstts")]
+[assembly: AssemblyTitle("SchemeTournament")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TEstts")]
+[assembly: AssemblyProduct("SchemeTournament")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("58f2690d-ac20-422f-be57-7c627384f8b1")]
+[assembly: Guid("f708b22e-8a04-4cb0-8cdf-2cb2ef34f01f")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

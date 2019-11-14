@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace naskoMENU.Properties
+namespace SchemeTournament.Properties
 {
 
 

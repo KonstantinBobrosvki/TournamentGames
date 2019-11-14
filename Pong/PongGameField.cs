@@ -177,15 +177,15 @@ namespace Pong
 
         private void CheckColisions()
         {
-            
-            var ball = Interactables.Where((p)=>p is Ball).First();
-            
+
+            var ball = Interactables.Where((p) => p is Ball).First();
+
             var p1Rect = new Rectangle(Player1.Position, Player1.Hero.Size);
             var p2Rect = new Rectangle(Player2.Position, Player2.Hero.Size);
 
             ball.Move();
-            
-        
+
+
 
             for (int i = 0; i < Interactables.Count; i++)
             {
@@ -194,11 +194,12 @@ namespace Pong
                     continue;
                 var tempBounds = new Rectangle(temp.Location, temp.Skin.Size);
                 var points = FourAngles(new Rectangle(ball.Location, ball.Skin.Size));
-                if(tempBounds.Contains(points[0])|| tempBounds.Contains(points[1]) || tempBounds.Contains(points[2]) || tempBounds.Contains(points[3]))
+                if (tempBounds.Contains(points[0]) || tempBounds.Contains(points[1]) || tempBounds.Contains(points[2]) || tempBounds.Contains(points[3]))
                 {
-                    if(ball.SpeedX<0)
+                    if (ball.SpeedX < 0)
                     {
                         temp.OnColision(Player2, Player1);
+
                     }
                     else
                     {
@@ -207,43 +208,50 @@ namespace Pong
                     }
                     Interactables.RemoveAt(i);
                     i--;
-                }  
+                }
             }
 
 
-                if (p1Rect.Contains(ball.Location) || p1Rect.Contains(ball.Location.X, ball.Location.Y + ball.Skin.Height))
+            if (p1Rect.Contains(ball.Location) || p1Rect.Contains(ball.Location.X, ball.Location.Y + ball.Skin.Height))
+            {
+                if (ball.Location.X - ball.SpeedX < p1Rect.X + p1Rect.Width)
                 {
-                    if (ball.Location.X  - ball.SpeedX < p1Rect.X+p1Rect.Width)
-                    {
                     ball.OnColision();
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     ball.OnColision(Player1, Player2);
 
-                    }
-
                 }
-                else if (p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y) || p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y + ball.Skin.Height))
+
+            }
+            else if (p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y) || p2Rect.Contains(ball.Location.X + ball.Skin.Width, ball.Location.Y + ball.Skin.Height))
+            {
+                if (ball.Location.X + ball.Skin.Width - ball.SpeedX > p2Rect.X)
                 {
-                    if (ball.Location.X + ball.Skin.Width - ball.SpeedX>p2Rect.X)
-                    {
                     ball.OnColision();
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     ball.OnColision(Player2, Player1);
 
-                    }
-
                 }
 
-                if (ball.Location.Y <= 0)
-                ball.OnColision();
-                else if (ball.Location.Y >= Height)
-                ball.OnColision();
+            }
 
-                if (ball.Location.X <= 0)
+            if (ball.Location.Y <= 0)
+            {
+                ball.OnColision();
+                
+            }
+            else if (ball.Location.Y+ball.Skin.Height >= Size.Height)
+            {
+                
+                ball.OnColision();
+                
+
+            }
+            if (ball.Location.X <= 0)
                 {
                     CurrentMatch.AddPoints(Player2.Account.ID);
                     NewRound();
