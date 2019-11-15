@@ -142,7 +142,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Започни нов турнир";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            
             // 
             // label1
             // 
@@ -1088,7 +1088,7 @@
             this.Controls.Add(this.button1);
             this.Name = "RangeListForm";
             this.Text = " ";
-            this.Load += new System.EventHandler(this.RangeListForm_Load_1);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

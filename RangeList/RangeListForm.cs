@@ -20,7 +20,7 @@ namespace RangeList
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
-           
+            this.Load += RangeListForm_Load;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,16 +46,12 @@ namespace RangeList
                     Convert.ToInt32(Math.Round(item.Size.Width * widthUp)),
                     Convert.ToInt32(Math.Round(item.Size.Height * heightUp))
                     );
-                //For get players in new tounament
-                var checkBox = new CheckBox();
-                checkBox.Location = new Point(item.Location.X - 40, item.Location.Y-item.Size.Height);
-                checkBox.Size = new Size(60, 60);
-                if(item is TextBox)
-                toAdd.Add(checkBox);
-                //For delete player
+               
+             
+                //TODO: For delete player
             }
 
-            Controls.AddRange(toAdd.ToArray());
+           
         }
 
         private void RangeListForm_Resize(object sender, EventArgs e)
