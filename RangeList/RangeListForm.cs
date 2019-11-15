@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TournamentBL;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RangeList
 {
     public partial class RangeListForm : Form
     {
         Size StandartSize ;
+        List<Player> Players = new List<Player>(32);
 
         public RangeListForm()
         {
@@ -58,6 +62,16 @@ namespace RangeList
         {
            
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("people.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, Players);
+            }
+               
         }
     }
 }
