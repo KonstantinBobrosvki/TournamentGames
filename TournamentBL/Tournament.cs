@@ -48,6 +48,22 @@ namespace TournamentBL
             }
         }
 
+        public Tournament(List<Player> players)
+        {
+            foreach (var item in players)
+            {
+                AllPlayers.Add(item);
+            }  
+            Rounds = new List<Match[]>(8);
+            CurrentRoundPlayers = new List<Player>();
+            Rounds.Add(new Match[0]);
+            foreach (var item in AllPlayers)
+            {
+                CurrentRoundPlayers.Add(item);
+            }
+            
+        }
+
         
 
         public void CreateRound()

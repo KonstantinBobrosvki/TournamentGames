@@ -13,6 +13,7 @@ namespace RangeList
     public partial class RangeListForm : Form
     {
         Size StandartSize ;
+
         public RangeListForm()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace RangeList
             var newSize = new Size(Width, Height);
             var widthUp = (newSize.Width+0.0) / StandartSize.Width;
             var heightUp = (newSize.Height + 0.0) / StandartSize.Height;
+            var toAdd = new List<CheckBox>(32);
 
             for (int i = 0; i < this.Controls.Count; i++)
             {
@@ -44,7 +46,16 @@ namespace RangeList
                     Convert.ToInt32(Math.Round(item.Size.Width * widthUp)),
                     Convert.ToInt32(Math.Round(item.Size.Height * heightUp))
                     );
-            }  
+                //For get players in new tounament
+                var checkBox = new CheckBox();
+                checkBox.Location = new Point(item.Location.X - 40, item.Location.Y-item.Size.Height);
+                checkBox.Size = new Size(60, 60);
+                if(item is TextBox)
+                toAdd.Add(checkBox);
+                //For delete player
+            }
+
+            Controls.AddRange(toAdd.ToArray());
         }
 
         private void RangeListForm_Resize(object sender, EventArgs e)

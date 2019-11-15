@@ -25,16 +25,21 @@ namespace SchemeTournament
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
                 player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16};
 
-            for (int i = 0; i < tournament.AllPlayers.Count; i++)
-            {
-                StartLabels[i].Text = this.tournament.AllPlayers[i].ToString();
-            }
+           
             tournament.CreateRound();
+            for (int i = 0; i <8; i++)
+            {
+                StartLabels[i].Text = this.tournament.Rounds[1][i].PlayerOne.ToString();
+                StartLabels[i*2].Text = this.tournament.Rounds[1][i].PlayerTwo.ToString();
+
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+          
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -60,45 +65,47 @@ namespace SchemeTournament
 
         private void SecondGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][1]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][1]);
             name.Show();
         }
 
         private void ThirdGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[3][2]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][2]);
             name.Show();
         }
 
         private void FourthGrupBoutton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[4][3]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][3]);
             name.Show();
         }
 
         private void FifthGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[5][4]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][4]);
             name.Show();
         }
 
         private void SixthGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[6][5]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][5]);
             name.Show();
             name.Show();
         }
 
         private void SeventhGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[7][6]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][6]);
             name.Show();
         }
 
         private void EighthGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[8][7]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][7]);
             name.Show();
         }
+
+      
     }
 }

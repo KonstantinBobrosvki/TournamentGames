@@ -14,8 +14,8 @@ namespace Pong
     {
         AbstaractGamer Player1;
         AbstaractGamer Player2;
-        const int PlayerWidth = 80;
-        const int PlayerHeight = 220;
+        public const int PlayerWidth = 40;
+        public const int PlayerHeight = 220;
         List<Interactable> Interactables = new List<Interactable>(3);
 
         public Match CurrentMatch { get; }
@@ -150,6 +150,8 @@ namespace Pong
                 Player2.MoveLeft();
             if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Right))
                 Player2.MoveRight();
+
+           
             
             
         }

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace RangeList
 {
-    static class RangeList
+    static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.

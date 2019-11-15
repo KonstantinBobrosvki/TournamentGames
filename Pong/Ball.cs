@@ -17,15 +17,18 @@ namespace Pong
         Image skin;
         public override void OnColision(AbstaractGamer gamer, AbstaractGamer otherGamer)
         {
-            SpeedX = SpeedX * -12 / 10;
-            SpeedY = SpeedY * 12 / 10;
+            if (gamer is PlayerInPongController && otherGamer is PlayerInPongController)
+            {
+                SpeedX = SpeedX * -12 / 10;
+                SpeedY = SpeedY * 12 / 10;
+            }
             
         }
 
         public override void OnColision()
         {
-            
-            SpeedY =  SpeedY * -12 / 10;
+           
+                SpeedY =  SpeedY * -12 / 10;
         }
         public Ball(Point p):base(p)
         {
@@ -33,15 +36,17 @@ namespace Pong
             Graphics g = Graphics.FromImage(image);
             g.FillEllipse(new SolidBrush(Color.FromArgb(255, 255, 255)), 0, 0, 80, 80);
 
-            //TODO: Remove coments aftre testings
+         
 
             Random random = new Random();
             var temp = random.Next(-15, 15);
             while (temp > -8 && temp < 8)
                 temp = random.Next(-15, 15);
-            SpeedX = temp;
+            SpeedX =  temp;
             temp = random.Next(-10, 10);
-            SpeedY = temp == 0 ? 7 : temp;
+            while (temp > -5 && temp < 5)
+                temp = random.Next(-15, 15);
+            SpeedY = temp;
             
 
             Skin = image;
