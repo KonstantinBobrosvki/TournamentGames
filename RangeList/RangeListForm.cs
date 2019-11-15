@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchemeTournament;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TournamentBL;
 
 namespace RangeList
 {
     public partial class RangeListForm : Form
     {
         Size StandartSize ;
+        SchemeForm schemeForm;
+        Tournament tournament;
+        List<string> players = new List<string>();
         public RangeListForm()
         {
             InitializeComponent();
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
-           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +53,18 @@ namespace RangeList
         private void RangeListForm_Resize(object sender, EventArgs e)
         {
            
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tournament = new Tournament(players.ToArray());
+            schemeForm = new SchemeForm(tournament);
+            schemeForm.Show();
+        }
+
+        private void RangeListForm_Load_1(object sender, EventArgs e)
+        {
 
         }
     }

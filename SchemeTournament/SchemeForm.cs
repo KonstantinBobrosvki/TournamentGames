@@ -35,6 +35,7 @@ namespace SchemeTournament
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -55,12 +56,11 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
-
         }
 
         private void SecondGrupButton_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][1]);
+            PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
         }
 
@@ -85,7 +85,6 @@ namespace SchemeTournament
         private void SixthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[6][5]);
-            name.Show();
             name.Show();
         }
 
