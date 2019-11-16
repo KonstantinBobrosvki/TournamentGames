@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.NewTournamentButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,9 +82,6 @@
             this.textBox48 = new System.Windows.Forms.TextBox();
             this.textBox49 = new System.Windows.Forms.TextBox();
             this.textBox50 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox51 = new System.Windows.Forms.TextBox();
             this.textBox52 = new System.Windows.Forms.TextBox();
             this.textBox53 = new System.Windows.Forms.TextBox();
@@ -132,16 +129,19 @@
             this.checkBox30 = new System.Windows.Forms.CheckBox();
             this.checkBox31 = new System.Windows.Forms.CheckBox();
             this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // NewTournamentButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(333, 140);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Започни нов турнир";
-            this.button1.UseVisualStyleBackColor = true;
+            this.NewTournamentButton.Location = new System.Drawing.Point(12, 166);
+            this.NewTournamentButton.Name = "NewTournamentButton";
+            this.NewTournamentButton.Size = new System.Drawing.Size(333, 140);
+            this.NewTournamentButton.TabIndex = 0;
+            this.NewTournamentButton.Text = "Започни нов турнир";
+            this.NewTournamentButton.UseVisualStyleBackColor = true;
+            this.NewTournamentButton.Click += new System.EventHandler(this.NewTournamentButton_Click);
             // 
             // label1
             // 
@@ -544,34 +544,6 @@
             this.textBox50.Size = new System.Drawing.Size(119, 20);
             this.textBox50.TabIndex = 53;
             this.textBox50.Text = "0";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 175);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(333, 124);
-            this.button2.TabIndex = 54;
-            this.button2.Text = "запамети";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(897, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "Име";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1064, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 56;
-            this.label5.Text = "Точки";
             // 
             // textBox51
             // 
@@ -976,6 +948,24 @@
             this.checkBox32.TabIndex = 104;
             this.checkBox32.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(897, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 55;
+            this.label4.Text = "Име";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1064, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 56;
+            this.label5.Text = "Точки";
+            // 
             // RangeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1031,7 +1021,6 @@
             this.Controls.Add(this.textBox51);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox50);
             this.Controls.Add(this.textBox49);
             this.Controls.Add(this.textBox48);
@@ -1085,9 +1074,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.NewTournamentButton);
             this.Name = "RangeListForm";
             this.Text = " ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RangeListForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1095,7 +1085,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button NewTournamentButton;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
@@ -1149,7 +1139,6 @@
         public System.Windows.Forms.TextBox textBox48;
         public System.Windows.Forms.TextBox textBox49;
         public System.Windows.Forms.TextBox textBox50;
-        public System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox textBox51;
