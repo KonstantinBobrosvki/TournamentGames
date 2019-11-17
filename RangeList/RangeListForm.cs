@@ -17,7 +17,6 @@ namespace RangeList
     {
         Size StandartSize ;
         List<Player> Players = new List<Player>(32);
-
         public RangeListForm()
         {
             InitializeComponent();
@@ -25,7 +24,9 @@ namespace RangeList
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Load += RangeListForm_Load;
+          
 
+            
 
         }
 
@@ -41,6 +42,7 @@ namespace RangeList
             var widthUp = (newSize.Width+0.0) / StandartSize.Width;
             var heightUp = (newSize.Height + 0.0) / StandartSize.Height;
             var toAdd = new List<Control>(32);
+            
             Bitmap deleteImage = new Bitmap(20, 20);
             {
                 
@@ -81,7 +83,7 @@ namespace RangeList
                        
                         toAdd.Add(delelteButton);
                         item.Tag = int.Parse(item.Name.Trim("textBox".ToArray())) /2;
-                        delelteButton.Tag = item.Tag;
+                        delelteButton.Tag = (int)item.Tag ;
                         delelteButton.Click += DeletePlayerButton_Click;
                       
                     }
@@ -132,30 +134,57 @@ namespace RangeList
             var obj = sender as Control;
 
            
+            
+            var c = Controls.OfType<Control>().Where(x => x.Tag!=null && (int)x.Tag == (int)obj.Tag ).ToList();
+            var toReplace = Controls.OfType<Control>().
+                Where(x => x.Location.X >= 457 * Width / StandartSize.Width && x.Location.X <= obj.Location.X && x.Location.Y>obj.Location.Y+obj.Height)
+                .OrderBy(x=>x.Location.Y).ToList();
+            Point[] previous = new Point[4] { c[0].Location, c[1].Location, c[2].Location, c[3].Location };
 
-            var c = Controls.OfType<Control>().Where(x => x.Tag!=null && (int)x.Tag == (int)obj.Tag);
-    
-            for (int i=0;i<c.Count();i++)
+         
+            for (int i = 0; i < toReplace.Count; i++)
             {
-               if( c.ElementAt(i) is TextBox box)
-               {
-                    if(int.TryParse(box.Text,out int g))
+                var item = toReplace[i];
+                if(item is CheckBox)
+                {
+                    var temp = previous[0];
+                    previous[0] = item.Location;
+
+                    item.Location =new Point(item.Location.X, temp.Y);
+
+                }
+                else if(item is TextBox box)
+                {
+                    Point temp;
+                    if (int.TryParse(box.Text, out int t))
                     {
-                        box.Text = "0";
+                        temp = previous[1];
+                        previous[1] = item.Location;
                     }
                     else
-                        box.Text = "";
-               }
-                else
+                    {
+                        temp = previous[2];
+
+                        previous[2] = item.Location;
+                    }
+                    item.Location = new Point(item.Location.X, temp.Y);
+                    
+                }
+                else if(item is Button)
                 {
+                    var temp = previous[3];
+                    previous[3] = item.Location;
+
+                    item.Location = new Point(item.Location.X, temp.Y);
 
                 }
             }
-            
-           
-            
 
-            
+            for (int i=0;i<c.Count;i++)
+            {
+                Controls.Remove(c[i]);
+            }
+         
         }
 
         private void RangeListForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -194,7 +223,7 @@ namespace RangeList
            List<string> names = new List<string>() { "Kontantin", "Ventsi", "Avraam", "Gosho", "Pesho", "Niki", "Gabi", "Kati", "Maq",
                "Zia", "Valq", "Vicroriq", "Desi", "Aleksei", "Stefan", "Marin", "Jaff",
            "Iliqn","Maxim","Jeffrey Richter","Olga","Adolf","Daniil","Fedq","Armen","Orkide","Raq","Zuska","Georg",
-           "Denitsa","Sandera"};
+           "Denitsa","Sandera","Elif","Virdjiniq","John","Bill"};
             var c = Controls.OfType<TextBox>().Where(x =>x.Enabled);
             foreach (var item in c)
             {
