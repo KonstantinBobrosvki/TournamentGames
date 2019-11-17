@@ -27,10 +27,12 @@ namespace SchemeTournament
 
            
             tournament.CreateRound();
-            for (int i = 0; i <8; i++)
+            for (int i = 0; i <16; i++)
             {
-                StartLabels[i].Text = this.tournament.Rounds[1][i].PlayerOne.ToString();
-                StartLabels[i*2].Text = this.tournament.Rounds[1][i].PlayerTwo.ToString();
+                if(i%2==0)
+                StartLabels[i].Text = this.tournament.Rounds[1][i/2].PlayerOne.ToString();
+                else
+                StartLabels[i].Text = this.tournament.Rounds[1][i/2].PlayerTwo.ToString();
 
             }
 
@@ -106,6 +108,15 @@ namespace SchemeTournament
             name.Show();
         }
 
-      
+       
+        
+        
+       
+
+       
+
+       
+
+        
     }
 }
