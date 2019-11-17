@@ -24,10 +24,11 @@ namespace RangeList
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Load += RangeListForm_Load;
-          
 
-            
-
+            for (int i = 0; i < 16; i++)
+            {
+                Controls.OfType<CheckBox>().ElementAt(i).Checked = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,14 +83,14 @@ namespace RangeList
                         delelteButton.Image = deleteImage;
                        
                         toAdd.Add(delelteButton);
-                        item.Tag = int.Parse(item.Name.Trim("textBox".ToArray())) /2;
+                        item.Tag = (int.Parse(item.Name.Trim("textBox".ToArray())) /2)-1;
                         delelteButton.Tag = (int)item.Tag ;
                         delelteButton.Click += DeletePlayerButton_Click;
                       
                     }
                     else
                     {
-                        var f = (int.Parse(item.Name.Trim("textBox".ToArray())) + 1) / 2;
+                        var f = ((int.Parse(item.Name.Trim("textBox".ToArray())) + 1) / 2)-1;
                         item.Tag = f;
                         item.LostFocus += NameChange;
 
@@ -99,7 +100,7 @@ namespace RangeList
 
                 if (item is CheckBox)
                 {
-                    item.Tag = int.Parse(item.Name.Remove(0, 8));
+                    item.Tag = int.Parse(item.Name.Remove(0, 8))-1;
                 }
             }
 
@@ -198,22 +199,25 @@ namespace RangeList
 
         private void NewTournamentButton_Click(object sender, EventArgs e)
         {
-            var c = Controls.OfType<CheckBox>().Where(x =>x.Checked).Select(x=> (int)x.Tag);
-            var pl = new List<Player>(16);
-            if (c.Count() != 16)
+            var c = Controls.OfType<CheckBox>().Where(x =>x.Checked).Select(x=> (int)x.Tag).ToList();
+            List<Player> pl = new List<Player>(16);
+            if (c.Count != 16)
             {
                 MessageBox.Show("Players must be 16");
                 return;
             }
             for (int i = 0; i < 16; i++)
             {
-                pl.Add(Players[c.ElementAt(i)]);
+                pl.Add(new Player("FF"));
             }
-            SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(new Tournament(pl));
+
+            Tournament tour = new Tournament(pl);
+            SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(tour);
             scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
-            scheme.Show();
             this.Hide();
-            this.ShowInTaskbar = false;
+            ShowInTaskbar = false;
+            scheme.Show();
+          
             
         }
 
@@ -223,11 +227,13 @@ namespace RangeList
            List<string> names = new List<string>() { "Kontantin", "Ventsi", "Avraam", "Gosho", "Pesho", "Niki", "Gabi", "Kati", "Maq",
                "Zia", "Valq", "Vicroriq", "Desi", "Aleksei", "Stefan", "Marin", "Jaff",
            "Iliqn","Maxim","Jeffrey Richter","Olga","Adolf","Daniil","Fedq","Armen","Orkide","Raq","Zuska","Georg",
-           "Denitsa","Sandera","Elif","Virdjiniq","John","Bill"};
-            var c = Controls.OfType<TextBox>().Where(x =>x.Enabled);
+           "Denitsa","Sandera","Elif","Virdjiniq","John","Bill","Naruto"};
+            var c = Controls.OfType<TextBox>().Where(x =>x.Enabled).Reverse();
             foreach (var item in c)
             {
-                item.Text = names[random.Next(0, names.Count)];
+                var name = names[random.Next(0, names.Count)];
+                item.Text = name;
+                Players.Add(new Player(name));
             }
 
         }

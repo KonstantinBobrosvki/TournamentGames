@@ -12,7 +12,7 @@ namespace TournamentBL
         /// <summary>
         /// All resgistred Players
         /// </summary>
-        public List<Player> AllPlayers { get; private set; } 
+        public List<Player> AllPlayers { get; private set; } = new List<Player>();
         /// <summary>
         /// All rounds
         /// </summary>
@@ -50,10 +50,10 @@ namespace TournamentBL
 
         public Tournament(List<Player> players)
         {
-            foreach (var item in players)
-            {
-                AllPlayers.Add(item);
-            }  
+            AllPlayers = new List<Player>();
+
+            AllPlayers.AddRange(players);
+
             Rounds = new List<Match[]>(8);
             CurrentRoundPlayers = new List<Player>();
             Rounds.Add(new Match[0]);
