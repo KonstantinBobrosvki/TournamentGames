@@ -208,10 +208,13 @@ namespace RangeList
             }
             for (int i = 0; i < 16; i++)
             {
-                pl.Add(new Player("FF"));
+                pl.Add(Players[c[i]]);
             }
+          
+
 
             Tournament tour = new Tournament(pl);
+            
             SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(tour);
             scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
             this.Hide();

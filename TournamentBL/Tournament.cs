@@ -16,7 +16,7 @@ namespace TournamentBL
         /// <summary>
         /// All rounds
         /// </summary>
-        public List<Match[]> Rounds { get; private set; }
+        public List<Match[]> Rounds { get; private set; } = new List<Match[]>(5);
         /// <summary>
         /// Number of current round
         /// </summary>
@@ -47,24 +47,19 @@ namespace TournamentBL
                 CurrentRoundPlayers.Add(AllPlayers[i]);
             }
         }
-
         public Tournament(List<Player> players)
         {
-            AllPlayers = new List<Player>();
+            AllPlayers = new List<Player>(players);
+            Rounds = new List<Match[]>(6) { new Match[0] };
+            CurrentRoundPlayers = new List<Player>(players);
+          
 
-            AllPlayers.AddRange(players);
 
-            Rounds = new List<Match[]>(8);
-            CurrentRoundPlayers = new List<Player>();
-            Rounds.Add(new Match[0]);
-            foreach (var item in AllPlayers)
-            {
-                CurrentRoundPlayers.Add(item);
-            }
-            
         }
 
-        
+
+
+
 
         public void CreateRound()
         {

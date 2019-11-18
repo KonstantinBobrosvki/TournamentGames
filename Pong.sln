@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeList", "RangeList\Rang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemeTournament", "SchemeTournament\SchemeTournament.csproj", "{F708B22E-8A04-4CB0-8CDF-2CB2EF34F01F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F708B22E-8A04-4CB0-8CDF-2CB2EF34F01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F708B22E-8A04-4CB0-8CDF-2CB2EF34F01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F708B22E-8A04-4CB0-8CDF-2CB2EF34F01F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
