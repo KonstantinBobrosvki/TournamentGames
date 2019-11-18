@@ -89,13 +89,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\TournamentBL\TournamentBL.csproj">
       <Project>{1a800845-9912-42a3-9f15-8f11f19c4452}</Project>
       <Name>TournamentBL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
