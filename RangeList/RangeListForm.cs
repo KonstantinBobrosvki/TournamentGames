@@ -23,7 +23,6 @@ namespace RangeList
             InitializeComponent();
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
             this.Load += RangeListForm_Load;
 
             for (int i = 0; i < 16; i++)

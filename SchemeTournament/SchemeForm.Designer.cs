@@ -557,9 +557,8 @@
             this.State2_P8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P8.Location = new System.Drawing.Point(7, 633);
             this.State2_P8.Name = "State2_P8";
-            this.State2_P8.Size = new System.Drawing.Size(79, 29);
+            this.State2_P8.Size = new System.Drawing.Size(0, 29);
             this.State2_P8.TabIndex = 34;
-            this.State2_P8.Text = "label1";
             // 
             // State2_P7
             // 
@@ -569,9 +568,8 @@
             this.State2_P7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P7.Location = new System.Drawing.Point(7, 562);
             this.State2_P7.Name = "State2_P7";
-            this.State2_P7.Size = new System.Drawing.Size(79, 29);
+            this.State2_P7.Size = new System.Drawing.Size(0, 29);
             this.State2_P7.TabIndex = 33;
-            this.State2_P7.Text = "label1";
             // 
             // label7
             // 
@@ -603,9 +601,8 @@
             this.State2_P6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P6.Location = new System.Drawing.Point(6, 460);
             this.State2_P6.Name = "State2_P6";
-            this.State2_P6.Size = new System.Drawing.Size(79, 29);
+            this.State2_P6.Size = new System.Drawing.Size(0, 29);
             this.State2_P6.TabIndex = 30;
-            this.State2_P6.Text = "label1";
             // 
             // State2_P5
             // 
@@ -615,9 +612,8 @@
             this.State2_P5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P5.Location = new System.Drawing.Point(7, 395);
             this.State2_P5.Name = "State2_P5";
-            this.State2_P5.Size = new System.Drawing.Size(79, 29);
+            this.State2_P5.Size = new System.Drawing.Size(0, 29);
             this.State2_P5.TabIndex = 29;
-            this.State2_P5.Text = "label1";
             // 
             // State2_Grup2Button
             // 
@@ -637,9 +633,8 @@
             this.State2_P4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P4.Location = new System.Drawing.Point(6, 291);
             this.State2_P4.Name = "State2_P4";
-            this.State2_P4.Size = new System.Drawing.Size(79, 29);
+            this.State2_P4.Size = new System.Drawing.Size(0, 29);
             this.State2_P4.TabIndex = 27;
-            this.State2_P4.Text = "label1";
             // 
             // State2_P3
             // 
@@ -649,9 +644,8 @@
             this.State2_P3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P3.Location = new System.Drawing.Point(6, 222);
             this.State2_P3.Name = "State2_P3";
-            this.State2_P3.Size = new System.Drawing.Size(79, 29);
+            this.State2_P3.Size = new System.Drawing.Size(0, 29);
             this.State2_P3.TabIndex = 26;
-            this.State2_P3.Text = "label1";
             // 
             // State2_Grup1Button
             // 
@@ -671,9 +665,8 @@
             this.State2_P2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P2.Location = new System.Drawing.Point(6, 131);
             this.State2_P2.Name = "State2_P2";
-            this.State2_P2.Size = new System.Drawing.Size(79, 29);
+            this.State2_P2.Size = new System.Drawing.Size(0, 29);
             this.State2_P2.TabIndex = 25;
-            this.State2_P2.Text = "label1";
             // 
             // State2_P1
             // 
@@ -683,9 +676,8 @@
             this.State2_P1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State2_P1.Location = new System.Drawing.Point(6, 62);
             this.State2_P1.Name = "State2_P1";
-            this.State2_P1.Size = new System.Drawing.Size(79, 29);
+            this.State2_P1.Size = new System.Drawing.Size(0, 29);
             this.State2_P1.TabIndex = 24;
-            this.State2_P1.Text = "label1";
             // 
             // label8
             // 
@@ -760,9 +752,8 @@
             this.State3_P4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State3_P4.Location = new System.Drawing.Point(6, 282);
             this.State3_P4.Name = "State3_P4";
-            this.State3_P4.Size = new System.Drawing.Size(79, 29);
+            this.State3_P4.Size = new System.Drawing.Size(0, 29);
             this.State3_P4.TabIndex = 38;
-            this.State3_P4.Text = "label1";
             // 
             // State3_P3
             // 
@@ -772,9 +763,8 @@
             this.State3_P3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State3_P3.Location = new System.Drawing.Point(6, 227);
             this.State3_P3.Name = "State3_P3";
-            this.State3_P3.Size = new System.Drawing.Size(79, 29);
+            this.State3_P3.Size = new System.Drawing.Size(0, 29);
             this.State3_P3.TabIndex = 37;
-            this.State3_P3.Text = "label1";
             // 
             // label13
             // 
@@ -806,9 +796,8 @@
             this.State3_P2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State3_P2.Location = new System.Drawing.Point(6, 133);
             this.State3_P2.Name = "State3_P2";
-            this.State3_P2.Size = new System.Drawing.Size(79, 29);
+            this.State3_P2.Size = new System.Drawing.Size(0, 29);
             this.State3_P2.TabIndex = 36;
-            this.State3_P2.Text = "label1";
             // 
             // State3_P1
             // 
@@ -818,9 +807,8 @@
             this.State3_P1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State3_P1.Location = new System.Drawing.Point(6, 63);
             this.State3_P1.Name = "State3_P1";
-            this.State3_P1.Size = new System.Drawing.Size(79, 29);
+            this.State3_P1.Size = new System.Drawing.Size(0, 29);
             this.State3_P1.TabIndex = 36;
-            this.State3_P1.Text = "label1";
             // 
             // label9
             // 
@@ -867,9 +855,8 @@
             this.State4_P2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State4_P2.Location = new System.Drawing.Point(6, 143);
             this.State4_P2.Name = "State4_P2";
-            this.State4_P2.Size = new System.Drawing.Size(79, 29);
+            this.State4_P2.Size = new System.Drawing.Size(0, 29);
             this.State4_P2.TabIndex = 40;
-            this.State4_P2.Text = "label1";
             // 
             // State4_P1
             // 
@@ -879,9 +866,8 @@
             this.State4_P1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.State4_P1.Location = new System.Drawing.Point(6, 46);
             this.State4_P1.Name = "State4_P1";
-            this.State4_P1.Size = new System.Drawing.Size(79, 29);
+            this.State4_P1.Size = new System.Drawing.Size(0, 29);
             this.State4_P1.TabIndex = 40;
-            this.State4_P1.Text = "label1";
             // 
             // label16
             // 
