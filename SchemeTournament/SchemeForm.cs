@@ -35,13 +35,54 @@ namespace SchemeTournament
                 StartLabels[i].Text = this.tournament.Rounds[1][i/2].PlayerTwo.ToString();
 
             }
+            tournament.RoundFinishedEvent += Tournament_RoundFinishedEvent;
+        }
 
+        private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
+        {
+            tournament.FinishRound();
+            tournament.CreateRound();
+            if (tournament.CurrentRound == 2)
+            {
+                List<Label> next = new List<Label> { State2_P1, State2_P2, State2_P3, State2_P4, State2_P5, State2_P6, State2_P7, State2_P8 };
+                for (int i = 0; i < 8; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[2][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[2][i / 2].PlayerTwo.ToString();
+
+                }
+            }
+            else if (tournament.CurrentRound == 3)
+            {
+                List<Label> next = new List<Label> { State3_P1, State3_P2, State3_P3, State3_P4};
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[3][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[3][i / 2].PlayerTwo.ToString();
+
+                }
+            }
+            else if (tournament.CurrentRound == 4)
+            {
+                List<Label> next = new List<Label> { State4_P1, State4_P2 };
+                for (int i = 0; i < 2; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[4][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[4][i / 2].PlayerTwo.ToString();
+
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-          
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -62,7 +103,6 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
-
         }
 
         private void SecondGrupButton_Click(object sender, EventArgs e)
@@ -93,7 +133,6 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][5]);
             name.Show();
-            name.Show();
         }
 
         private void SeventhGrupButton_Click(object sender, EventArgs e)
@@ -107,16 +146,47 @@ namespace SchemeTournament
             PongGameField name = new PongGameField(tournament.Rounds[1][7]);
             name.Show();
         }
-
-       
         
-        
-       
+        private void State2_Grup1Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[2][0]);
+            name.Show();
+        }
 
-       
+        private void State2_Grup2Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[2][1]);
+            name.Show();
+        }
 
-       
+        private void State2_Grup3Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[2][2]);
+            name.Show();
+        }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[2][3]);
+            name.Show();
+        }
+       
+        private void State3_Grup1Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[3][0]);
+            name.Show();
+        }
+
+        private void State3_Grup2Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[3][1]);
+            name.Show();
+        }
+
+        private void State4_Grup1Button_Click(object sender, EventArgs e)
+        {
+            PongGameField name = new PongGameField(tournament.Rounds[4][0]);
+            name.Show();
+        }
     }
 }

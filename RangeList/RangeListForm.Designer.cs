@@ -1092,6 +1092,7 @@
             this.Name = "RangeListForm";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RangeListForm_FormClosing);
+            this.Load += new System.EventHandler(this.RangeListForm_Load_1);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RangeListForm_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RangeListForm_KeyUp);
             this.ResumeLayout(false);
