@@ -20,7 +20,9 @@ namespace RangeList
         public RangeListForm()
         {
             KeyPreview = true;
+
             InitializeComponent();
+            
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
@@ -34,10 +36,6 @@ namespace RangeList
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void RangeListForm_Load(object sender, EventArgs e)
         {
@@ -108,9 +106,11 @@ namespace RangeList
             }
 
             Controls.AddRange(toAdd.ToArray());
-            #endregion
+
           
-            if(File.Exists(Directory.GetCurrentDirectory()+"\\peoples.dat"))
+            #endregion
+
+            if (File.Exists(Directory.GetCurrentDirectory()+"\\peoples.dat"))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\peoples.dat", FileMode.Open, FileAccess.ReadWrite))
@@ -150,11 +150,13 @@ namespace RangeList
             
             var c = Controls.OfType<Control>().Where(x => x.Tag!=null && (int)x.Tag == (int)obj.Tag ).ToList();
             var toReplace = Controls.OfType<Control>()
-                .Where(x => x.Location.X > obj.Location.X+1 || x.Location.Y>obj.Location.Y+obj.Height)
+                .Where(x => x.Location.X > obj.Location.X+1 || (x.Location.Y>obj.Location.Y+obj.Height && x.Location.X>=LinkedItems((int)obj.Tag).Item1.Location.X))
                 .OrderBy(x=>x.Location.X)
                 .ThenBy(x=>x.Location.Y)
                 .Where(x=>x is Label ==false).ToList();
             toReplace.Remove(NewTournamentButton);
+            toReplace.Remove(NewPlayerButton);
+
             Point[] previous = new Point[4] { c[0].Location, c[1].Location, c[2].Location, c[3].Location };
 
             Players.RemoveAt((int)obj.Tag);
@@ -162,7 +164,7 @@ namespace RangeList
 
             for (int i = 0; i < toReplace.Count; i++)
             {
-                var item = toReplace[i];
+                var item = toReplace[i];             
                 if(item is CheckBox)
                 {
                     var temp = previous[0];
@@ -196,15 +198,25 @@ namespace RangeList
                     item.Location = temp;
 
                 }
-
+                else
+                {
+                    throw new Exception();
+                }
                 item.Tag = (int)item.Tag - 1;
+                
             }
+
+           
+
 
             for (int i=0;i<c.Count;i++)
             {
                 Controls.Remove(c[i]);
             }
-         
+            NewPlayerButton.Location = previous[2];
+
+            
+
         }
 
         private void RangeListForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -246,7 +258,7 @@ namespace RangeList
 
         private void FillRandomNames()
         {
-            Random random = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
            List<string> names = new List<string>() { "Kontantin", "Ventsi", "Avraam", "Gosho", "Pesho", "Niki", "Gabi", "Kati", "Maq",
                "Zia", "Valq", "Vicroriq", "Desi", "Aleksei", "Stefan", "Marin", "Jaff",
            "Iliqn","Maxim","Jeffrey Richter","Olga","Adolf","Daniil","Fedq","Armen","Orkide","Raq","Zuska","Georg",
@@ -258,7 +270,7 @@ namespace RangeList
                 item.Text = name;
                 Players.Add(new Player(name));
             }
-
+            
         }
 
         /// <summary>
@@ -268,6 +280,7 @@ namespace RangeList
         /// <returns>IsPlaying,Name,Points,DeleteButton</returns>
         private (CheckBox,TextBox,TextBox,Button) LinkedItems(int tag)
         {
+            
             var c = Controls.OfType<Control>().Where(x => x.Tag != null && (int)x.Tag == tag)
                 .ToList();
             if (c.Count != 4)
@@ -299,6 +312,11 @@ namespace RangeList
             //    this.Close();
             //else
             //    MessageBox.Show("Good choice");
+        }
+
+        private void NewPlayerButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

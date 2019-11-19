@@ -131,6 +131,7 @@
             this.checkBox32 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.NewPlayerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewTournamentButton
@@ -966,12 +967,24 @@
             this.label5.TabIndex = 56;
             this.label5.Text = "Точки";
             // 
+            // NewPlayerButton
+            // 
+            this.NewPlayerButton.BackColor = System.Drawing.Color.GreenYellow;
+            this.NewPlayerButton.Location = new System.Drawing.Point(858, 227);
+            this.NewPlayerButton.Name = "NewPlayerButton";
+            this.NewPlayerButton.Size = new System.Drawing.Size(119, 20);
+            this.NewPlayerButton.TabIndex = 105;
+            this.NewPlayerButton.Text = "Add new player";
+            this.NewPlayerButton.UseVisualStyleBackColor = false;
+            this.NewPlayerButton.Click += new System.EventHandler(this.NewPlayerButton_Click);
+            // 
             // RangeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1240, 690);
+            
             this.Controls.Add(this.checkBox32);
             this.Controls.Add(this.checkBox31);
             this.Controls.Add(this.checkBox30);
@@ -1075,6 +1088,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NewTournamentButton);
+            this.Controls.Add(this.NewPlayerButton);
             this.Name = "RangeListForm";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RangeListForm_FormClosing);
@@ -1190,6 +1204,7 @@
         private System.Windows.Forms.CheckBox checkBox30;
         private System.Windows.Forms.CheckBox checkBox31;
         private System.Windows.Forms.CheckBox checkBox32;
+        private System.Windows.Forms.Button NewPlayerButton;
     }
 }
 
