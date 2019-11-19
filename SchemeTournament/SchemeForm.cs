@@ -35,7 +35,50 @@ namespace SchemeTournament
                 StartLabels[i].Text = this.tournament.Rounds[1][i/2].PlayerTwo.ToString();
 
             }
+            tournament.RoundFinishedEvent += Tournament_RoundFinishedEvent;
+        }
 
+        private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
+        {
+            tournament.FinishRound();
+            tournament.CreateRound();
+            if (tournament.CurrentRound == 2)
+            {
+                List<Label> next = new List<Label> { State2_P1, State2_P2, State2_P3, State2_P4, State2_P5, State2_P6, State2_P7, State2_P8 };
+                for (int i = 0; i < 16; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerTwo.ToString();
+
+                }
+            }
+            else if (tournament.CurrentRound == 3)
+            {
+                List<Label> next = new List<Label> { State3_P1, State3_P2, State3_P3, State3_P4};
+                for (int i = 0; i < 16; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerTwo.ToString();
+
+                }
+            }
+            else if (tournament.CurrentRound == 4)
+            {
+                List<Label> next = new List<Label> { State4_P1, State4_P2 };
+                for (int i = 0; i < 16; i++)
+                {
+                    if (i % 2 == 0)
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerOne.ToString();
+                    else
+                        next[i].Text = this.tournament.Rounds[1][i / 2].PlayerTwo.ToString();
+
+                }
+            }
+            throw new NotImplementedException();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,7 +105,6 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
-
         }
 
         private void SecondGrupButton_Click(object sender, EventArgs e)

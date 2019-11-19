@@ -300,5 +300,10 @@ namespace RangeList
             //else
             //    MessageBox.Show("Good choice");
         }
+
+        private void RangeListForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
