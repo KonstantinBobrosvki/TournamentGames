@@ -547,6 +547,7 @@
             this.button1.TabIndex = 35;
             this.button1.Text = "Play match";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // State2_P8
             // 
@@ -592,6 +593,7 @@
             this.State2_Grup3Button.TabIndex = 31;
             this.State2_Grup3Button.Text = "Play match";
             this.State2_Grup3Button.UseVisualStyleBackColor = true;
+            this.State2_Grup3Button.Click += new System.EventHandler(this.State2_Grup3Button_Click);
             // 
             // State2_P6
             // 
@@ -625,6 +627,7 @@
             this.State2_Grup2Button.TabIndex = 28;
             this.State2_Grup2Button.Text = "Play match";
             this.State2_Grup2Button.UseVisualStyleBackColor = true;
+            this.State2_Grup2Button.Click += new System.EventHandler(this.State2_Grup2Button_Click);
             // 
             // State2_P4
             // 
@@ -658,6 +661,7 @@
             this.State2_Grup1Button.TabIndex = 24;
             this.State2_Grup1Button.Text = "Play match";
             this.State2_Grup1Button.UseVisualStyleBackColor = true;
+            this.State2_Grup1Button.Click += new System.EventHandler(this.State2_Grup1Button_Click);
             // 
             // State2_P2
             // 
@@ -746,6 +750,7 @@
             this.State3_Grup2Button.TabIndex = 39;
             this.State3_Grup2Button.Text = "Play match";
             this.State3_Grup2Button.UseVisualStyleBackColor = true;
+            this.State3_Grup2Button.Click += new System.EventHandler(this.State3_Grup2Button_Click);
             // 
             // State3_P4
             // 
@@ -791,6 +796,7 @@
             this.State3_Grup1Button.TabIndex = 36;
             this.State3_Grup1Button.Text = "Play match";
             this.State3_Grup1Button.UseVisualStyleBackColor = true;
+            this.State3_Grup1Button.Click += new System.EventHandler(this.State3_Grup1Button_Click);
             // 
             // State3_P2
             // 
@@ -851,6 +857,7 @@
             this.State4_Grup1Button.TabIndex = 40;
             this.State4_Grup1Button.Text = "Play match";
             this.State4_Grup1Button.UseVisualStyleBackColor = true;
+            this.State4_Grup1Button.Click += new System.EventHandler(this.State4_Grup1Button_Click);
             // 
             // State4_P2
             // 
