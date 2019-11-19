@@ -5,10 +5,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Pong
 {
-    public  class SmallerBonus : Interactable
+    public abstract class Bonus:Interactable
+    {
+        public Bonus(Point p):base(p)
+        {
+
+        }
+
+        protected void ReturnToNormal(Action<AbstaractGamer,AbstaractGamer > action,AbstaractGamer p1,AbstaractGamer p2)
+        {
+            Timer timer = new Timer
+            {
+                Interval = 10000
+            };
+            timer.Start();
+            timer.Tick += (s, e) => {
+                action.Invoke(p1, p2);
+                timer.Stop();
+                timer.Dispose();
+            };
+        }
+    }
+
+    public  class SmallerBonus : Bonus
     {
         public override Image Skin { get => skin; protected set => skin = value; }
         private Image skin;
@@ -45,7 +68,7 @@ namespace Pong
         }
     }
 
-    public class BiggerBonus : Interactable
+    public class BiggerBonus : Bonus
     {
         public override Image Skin { get => skin; protected set => skin = value; }
         private Image skin;

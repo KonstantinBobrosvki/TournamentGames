@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,9 @@ namespace Pong
                 SpeedY = SpeedY * 12 / 10;
             }
             
+            SoundPlayer simpleSound = new SoundPlayer(Resources.Resources.Udar);
+            simpleSound.Play();
+
         }
 
         public override void OnColision()

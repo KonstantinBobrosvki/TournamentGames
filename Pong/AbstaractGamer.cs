@@ -25,6 +25,12 @@ namespace Pong
             Account = mainAccount;
         }
 
+        protected AbstaractGamer(Player main)
+        {
+            Account = main;
+
+        }
+
         public virtual void MoveUp()
         {
            Position= new Point(Position.X, Position.Y - SpeedY);

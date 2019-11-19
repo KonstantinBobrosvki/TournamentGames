@@ -11,19 +11,31 @@ namespace Pong
 {
     public class PlayerInPongController :AbstaractGamer
     {
+        private static bool Right=true;
         public override Image BackGround
         {
             get
             {
+                Bitmap originalImage = new Bitmap(Resources.Resources.Cort);
+                Rectangle rect = new Rectangle(0, 0, originalImage.Width / 2, originalImage.Height);
+                Bitmap firstHalf = originalImage.Clone(rect, originalImage.PixelFormat);
+            
+                rect = new Rectangle(originalImage.Width / 2, 0, originalImage.Width / 2, originalImage.Height);
+                Bitmap secondHalf = originalImage.Clone(rect, originalImage.PixelFormat);
+                if (Right)
+                {
 
-                Bitmap flag = new Bitmap(200, 100);
-                Graphics flagGraphics = Graphics.FromImage(flag);
-                Random rnd = new Random(Guid.NewGuid().GetHashCode());
+                    Right = false;
+                    return firstHalf;
+                }
+                else
+                {
+                    Right = true;
+
+                  
+                    return secondHalf;
+                }
                
-                var color = Color.FromArgb( rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
-               flagGraphics.FillRectangle(new SolidBrush (color), 0, 0, 200, 100);
-                
-                return flag;
             }
 
         }
@@ -32,8 +44,10 @@ namespace Pong
        
         
 
-        public PlayerInPongController(Image box, Player player) : base(box, player)
+        public PlayerInPongController(Image box, Player player) : base( player)
         {
+         
+            Hero= new Bitmap(Resources.Resources.Rocket, box.Size);
             SpeedY = 20;
         }
 

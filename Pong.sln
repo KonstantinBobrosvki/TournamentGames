@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemeTournament", "SchemeT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{5D52142E-FFB5-4EE3-9AAA-E1DFF5D14AA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,8 @@ Global
 		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE16839D-3E54-4979-BEA7-3ED9E9AF65F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D52142E-FFB5-4EE3-9AAA-E1DFF5D14AA5}.Debug|Any CPU.ActiveCfg = Debug
+		{5D52142E-FFB5-4EE3-9AAA-E1DFF5D14AA5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

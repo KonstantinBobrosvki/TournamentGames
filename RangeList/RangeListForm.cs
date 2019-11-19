@@ -19,6 +19,7 @@ namespace RangeList
         List<Player> Players = new List<Player>(32);
         public RangeListForm()
         {
+            KeyPreview = true;
             InitializeComponent();
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
@@ -29,6 +30,8 @@ namespace RangeList
             {
                 Controls.OfType<CheckBox>().ElementAt(i).Checked = true;
             }
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -106,13 +109,20 @@ namespace RangeList
 
             Controls.AddRange(toAdd.ToArray());
             #endregion
-
+          
             if(File.Exists(Directory.GetCurrentDirectory()+"\\peoples.dat"))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("people.dat", FileMode.Open, FileAccess.ReadWrite))
+                using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\peoples.dat", FileMode.Open, FileAccess.ReadWrite))
                 {
                    Players= formatter.Deserialize(fs) as List<Player>;
+                }
+                for (int i = 0; i < Players.Count; i++)
+                {
+                    var item = Players[i];
+                    var r = LinkedItems(i);
+                    r.Item2.Text = item.Name;
+                    r.Item3.Text = item.WinsGames.ToString();
                 }
             }
             else
@@ -126,7 +136,9 @@ namespace RangeList
 
         private void NameChange(object sender,EventArgs e)
         {
-           
+            var name = sender as TextBox;
+            Players[(int)name.Tag] = new Player(name.Text);
+            LinkedItems((int)name.Tag).Item3.Text = "0";
          
         }
 
@@ -137,12 +149,17 @@ namespace RangeList
            
             
             var c = Controls.OfType<Control>().Where(x => x.Tag!=null && (int)x.Tag == (int)obj.Tag ).ToList();
-            var toReplace = Controls.OfType<Control>().
-                Where(x => x.Location.X >= 457 * Width / StandartSize.Width && x.Location.X <= obj.Location.X && x.Location.Y>obj.Location.Y+obj.Height)
-                .OrderBy(x=>x.Location.Y).ToList();
+            var toReplace = Controls.OfType<Control>()
+                .Where(x => x.Location.X > obj.Location.X+1 || x.Location.Y>obj.Location.Y+obj.Height)
+                .OrderBy(x=>x.Location.X)
+                .ThenBy(x=>x.Location.Y)
+                .Where(x=>x is Label ==false).ToList();
+            toReplace.Remove(NewTournamentButton);
             Point[] previous = new Point[4] { c[0].Location, c[1].Location, c[2].Location, c[3].Location };
 
-         
+            Players.RemoveAt((int)obj.Tag);
+
+
             for (int i = 0; i < toReplace.Count; i++)
             {
                 var item = toReplace[i];
@@ -151,7 +168,7 @@ namespace RangeList
                     var temp = previous[0];
                     previous[0] = item.Location;
 
-                    item.Location =new Point(item.Location.X, temp.Y);
+                    item.Location =temp;
 
                 }
                 else if(item is TextBox box)
@@ -168,7 +185,7 @@ namespace RangeList
 
                         previous[2] = item.Location;
                     }
-                    item.Location = new Point(item.Location.X, temp.Y);
+                    item.Location = temp;
                     
                 }
                 else if(item is Button)
@@ -176,9 +193,11 @@ namespace RangeList
                     var temp = previous[3];
                     previous[3] = item.Location;
 
-                    item.Location = new Point(item.Location.X, temp.Y);
+                    item.Location = temp;
 
                 }
+
+                item.Tag = (int)item.Tag - 1;
             }
 
             for (int i=0;i<c.Count;i++)
@@ -191,7 +210,7 @@ namespace RangeList
         private void RangeListForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("people.dat", FileMode.Create,FileAccess.ReadWrite))
+            using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\peoples.dat", FileMode.Create,FileAccess.ReadWrite))
             {
                 formatter.Serialize(fs, Players);
             }
@@ -215,13 +234,14 @@ namespace RangeList
 
             Tournament tour = new Tournament(pl);
             
-            SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(tour);
-            scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
+          
             this.Hide();
             ShowInTaskbar = false;
+            SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(tour);
+            scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
             scheme.Show();
-          
-            
+
+
         }
 
         private void FillRandomNames()
@@ -239,6 +259,46 @@ namespace RangeList
                 Players.Add(new Player(name));
             }
 
+        }
+
+        /// <summary>
+        /// Get four controls responding for player
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns>IsPlaying,Name,Points,DeleteButton</returns>
+        private (CheckBox,TextBox,TextBox,Button) LinkedItems(int tag)
+        {
+            var c = Controls.OfType<Control>().Where(x => x.Tag != null && (int)x.Tag == tag)
+                .ToList();
+            if (c.Count != 4)
+                throw new Exception();
+            var check = c.OfType<CheckBox>().First();
+            var name = c.OfType<TextBox>().Where(x => x.Enabled).First();
+            var points = c.OfType<TextBox>().Where(x => !x.Enabled).First();
+            var but = c.OfType<Button>().First();
+            return (check, name, points, but);
+        }
+
+        private void RangeListForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape)
+                return;
+            var res = MessageBox.Show("Do you want to exit app", "Exit window", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+                this.Close();
+            else
+                MessageBox.Show("Good choice");
+        }
+
+        private void RangeListForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e.KeyChar != (char)Keys.Escape)
+            //    return;
+            //var res = MessageBox.Show("Do you want to exit app", "Exit window", MessageBoxButtons.YesNo);
+            //if (res == DialogResult.Yes)
+            //    this.Close();
+            //else
+            //    MessageBox.Show("Good choice");
         }
     }
 }

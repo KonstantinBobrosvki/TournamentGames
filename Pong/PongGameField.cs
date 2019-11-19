@@ -14,7 +14,7 @@ namespace Pong
     {
         AbstaractGamer Player1;
         AbstaractGamer Player2;
-        public const int PlayerWidth = 40;
+        public const int PlayerWidth = 80;
         public const int PlayerHeight = 220;
         List<Interactable> Interactables = new List<Interactable>(3);
 
@@ -75,6 +75,7 @@ namespace Pong
         private void Match_WinEvent(object sender, WinEventArgs e)
         {
             MainGameLoopTimer.Enabled = false;
+            
             this.Refresh();
             if (e.Winner.Equals(Player1.Account))
             {
@@ -86,7 +87,8 @@ namespace Pong
                 P2ScoreLabel.Text = Player2.Account.Name + " won";
                 this.CreateGraphics().DrawString(Player2.Account.Name +  " is Winner", new Font("Arial", 50, FontStyle.Bold), new SolidBrush(Color.FromArgb(255, 0, 0)), this.Width / 2 - 100, this.Height / 2 - 50);
             }
-            System.Threading.Thread.Sleep(6000);
+            System.Threading.Thread.Sleep(4000);
+            Close();
 
         }
 
@@ -119,12 +121,14 @@ namespace Pong
 
 
         private void CombineBackgrounds()
+
         {
             Bitmap flag = new Bitmap(Player2.BackGround.Width + Player1.BackGround.Width, (Player1.BackGround.Height + Player2.BackGround.Height) / 2);
 
             Graphics flagGraphics = Graphics.FromImage(flag);
 
             flagGraphics.DrawImage(Player1.BackGround,new Rectangle(0,0,Player1.BackGround.Width, (Player1.BackGround.Height + Player2.BackGround.Height) / 2));
+          var crutch= Player2.BackGround;
             flagGraphics.DrawImage(Player2.BackGround, new Rectangle(Player1.BackGround.Width, 0, Player2.BackGround.Width, (Player1.BackGround.Height + Player2.BackGround.Height) / 2));
 
             this.BackgroundImage = flag;
@@ -132,19 +136,19 @@ namespace Pong
 
         private void PongGameField_KeyDown(object sender, KeyEventArgs e)
         {
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.S))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.S) && Player1.Position.Y+Player1.Hero.Height<Height)
                 Player1.MoveDown();
             if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.A))
                 Player1.MoveLeft();
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.W))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.W) && Player1.Position.Y > 0)
                 Player1.MoveUp();
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.D))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.D) )
                 Player1.MoveRight();
             
 
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Down))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Down) &&Player2.Position.Y + Player2.Hero.Height < Height)
                 Player2.MoveDown();
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Up))
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Up) && Player2.Position.Y > 0)
                 Player2.MoveUp();
             if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Left))
                 Player2.MoveLeft();
