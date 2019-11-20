@@ -984,7 +984,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1240, 690);
-            
             this.Controls.Add(this.checkBox32);
             this.Controls.Add(this.checkBox31);
             this.Controls.Add(this.checkBox30);
@@ -1092,7 +1091,6 @@
             this.Name = "RangeListForm";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RangeListForm_FormClosing);
-          
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RangeListForm_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RangeListForm_KeyUp);
             this.ResumeLayout(false);

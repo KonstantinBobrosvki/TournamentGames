@@ -17,6 +17,8 @@ namespace RangeList
     {
         Size StandartSize ;
         List<Player> Players = new List<Player>(32);
+        Point RightColumnFirstPos;
+
         public RangeListForm()
         {
             KeyPreview = true;
@@ -36,6 +38,64 @@ namespace RangeList
             
         }
 
+        private void GenerateNewBoxes(int i)
+        {
+            var textBox1 = LinkedItems(25).Item2;
+            var textBox2 = LinkedItems(25).Item3;
+            var checkBox1 = LinkedItems(25).Item1;
+            for (; i < Players.Count; i++)
+            {
+                int yForControls = NewPlayerButton.Location.Y;
+               
+                var checkBox = new CheckBox()
+                {
+                    Size = checkBox1.Size,
+                    Location = new Point(checkBox1.Location.X, yForControls),
+                    Tag = i
+                };
+                var nameBox = new TextBox() { Size = textBox1.Size, Location = new Point(textBox1.Location.X, yForControls), Tag = i };
+                var pointsBox = new TextBox() { Size = textBox2.Size, Location = new Point(textBox2.Location.X, yForControls), Tag = i, Enabled = false };
+                var deletebut = new Button() { Tag = i };
+                nameBox.Text = Players[i].Name;
+                pointsBox.Text = Players[i].WinsGames.ToString();
+                Bitmap deleteImage = new Bitmap(20, 20);
+                {
+
+                    Graphics flagGraphics = Graphics.FromImage(deleteImage);
+
+
+                    var color = Color.Red;
+                    flagGraphics.DrawLine(new Pen(color), 0, 0, 20, 20);
+                    flagGraphics.DrawLine(new Pen(color), 0, 20, 20, 0);
+
+
+                }
+                ToolTip toolTip = new ToolTip();
+
+
+
+                toolTip.SetToolTip(deletebut, "Delete player");
+
+                deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
+                deletebut.Size = new Size(20, 20);
+                deletebut.Image = deleteImage;
+                deletebut.Click += DeletePlayerButton_Click;
+
+
+                nameBox.LostFocus += NameChange;
+
+                Controls.Add(nameBox);
+                Controls.Add(deletebut);
+                Controls.Add(pointsBox);
+                Controls.Add(checkBox);
+
+                
+                NewPlayerButton.Location = new Point(NewPlayerButton.Location.X,
+                    LinkedItems(i-25).Item2.Location.Y);
+
+            }
+           
+        }
 
         private void RangeListForm_Load(object sender, EventArgs e)
         {
@@ -107,8 +167,10 @@ namespace RangeList
 
             Controls.AddRange(toAdd.ToArray());
 
-          
+
             #endregion
+
+            RightColumnFirstPos = checkBox26.Location;
 
             if (File.Exists(Directory.GetCurrentDirectory()+"\\peoples.dat"))
             {
@@ -117,6 +179,12 @@ namespace RangeList
                 {
                    Players= formatter.Deserialize(fs) as List<Player>;
                 }
+
+                GenerateNewBoxes(32);
+
+                
+              
+
                 for (int i = 0; i < Players.Count; i++)
                 {
                     var item = Players[i];
@@ -124,6 +192,17 @@ namespace RangeList
                     r.Item2.Text = item.Name;
                     r.Item3.Text = item.WinsGames.ToString();
                 }
+                
+
+                for (int i = Players.Count; i < 32; i++)
+                {
+                    var t = LinkedItems(i);
+                    Controls.Remove(t.Item1);
+                    Controls.Remove(t.Item2);
+                    Controls.Remove(t.Item3);
+                    Controls.Remove(t.Item4);
+                }
+
             }
             else
             {
@@ -144,6 +223,12 @@ namespace RangeList
 
         private void DeletePlayerButton_Click(object sender,EventArgs e)
         {
+            if(Players.Count==16)
+            {
+                MessageBox.Show("Minimum players are 16");
+                return;
+            }
+
             var obj = sender as Control;
 
            
@@ -156,6 +241,10 @@ namespace RangeList
                 .Where(x=>x is Label ==false).ToList();
             toReplace.Remove(NewTournamentButton);
             toReplace.Remove(NewPlayerButton);
+            c[0] = LinkedItems((int)obj.Tag).Item1;
+            c[1] = LinkedItems((int)obj.Tag).Item3;
+            c[2] = LinkedItems((int)obj.Tag).Item2;
+            c[3] = LinkedItems((int)obj.Tag).Item4;
 
             Point[] previous = new Point[4] { c[0].Location, c[1].Location, c[2].Location, c[3].Location };
 
@@ -202,6 +291,7 @@ namespace RangeList
                 {
                     throw new Exception();
                 }
+                if(item.Tag!=null)
                 item.Tag = (int)item.Tag - 1;
                 
             }
@@ -249,11 +339,22 @@ namespace RangeList
           
             this.Hide();
             ShowInTaskbar = false;
-            SchemeTournament.SchemeForm scheme = new SchemeTournament.SchemeForm(tour);
+            scheme = new SchemeTournament.SchemeForm(tour);
             scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
+            tour.TournamentFinishedEvent += Tour_TournamentFinishedEvent;
             scheme.Show();
 
 
+        }
+        SchemeTournament.SchemeForm scheme;
+        private void Tour_TournamentFinishedEvent(object sender, EventArgs e)
+        {
+            var obj = sender as Tournament;
+            scheme.Close();
+            for (int i = 0; i < Players.Count; i++)
+            {
+                LinkedItems(i).Item3.Text = Players[i].WinsGames.ToString();
+            }
         }
 
         private void FillRandomNames()
@@ -316,7 +417,174 @@ namespace RangeList
 
         private void NewPlayerButton_Click(object sender, EventArgs e)
         {
+           if(Players.Count<25)
+           {
+
+                Players.Add(new Player("Unnamed"));
+                int yForControls = NewPlayerButton.Location.Y;
+
+                var checkBox = new CheckBox() { Size = checkBox1.Size,
+                    Location = new Point(checkBox1.Location.X, yForControls),
+                    Tag = Players.Count - 1 };
+                var nameBox = new TextBox() { Size = textBox1.Size, Location = new Point(textBox1.Location.X, yForControls), Tag = Players.Count - 1 };
+                var pointsBox = new TextBox() { Size = textBox2.Size, Location = new Point(textBox2.Location.X, yForControls), Tag = Players.Count - 1, Enabled = false };
+                var deletebut = new Button() { Tag = Players.Count - 1 };
+                nameBox.Text = Players[Players.Count - 1].Name;
+                pointsBox.Text = "0";
+                Bitmap deleteImage = new Bitmap(20, 20);
+                {
+
+                    Graphics flagGraphics = Graphics.FromImage(deleteImage);
+
+
+                    var color = Color.Red;
+                    flagGraphics.DrawLine(new Pen(color), 0, 0, 20, 20);
+                    flagGraphics.DrawLine(new Pen(color), 0, 20, 20, 0);
+
+
+                }
+                ToolTip toolTip = new ToolTip();
+
+
+
+                toolTip.SetToolTip(deletebut, "Delete player");
+
+                deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
+                deletebut.Size = new Size(20, 20);
+                deletebut.Image = deleteImage;
+                deletebut.Click += DeletePlayerButton_Click;
+
+
+                nameBox.LostFocus += NameChange;
+
+                Controls.Add(nameBox);
+                Controls.Add(deletebut);
+                Controls.Add(pointsBox);
+                Controls.Add(checkBox);
+
+                var temp = LinkedItems(Players.Count - 2).Item2;
+                NewPlayerButton.Location = new Point(NewPlayerButton.Location.X,
+                    NewPlayerButton.Location.Y+ (NewPlayerButton.Location.Y - temp.Location.Y));
+
+
+            }
+            else if(Players.Count == 25)
+            {
+               
+                Players.Add(new Player("Unnamed"));
+                int yForControls = NewPlayerButton.Location.Y;
+
+                var checkBox = new CheckBox() { Size = checkBox1.Size,
+                    Location = RightColumnFirstPos,
+                    Tag=Players.Count-1
+                };
+
+                var nameBox = new TextBox() { Size = textBox1.Size,
+                    Location = new Point(checkBox.Location.X+( textBox1.Location.X-checkBox1.Location.X), checkBox.Location.Y),
+                    Tag = Players.Count - 1 };
+
+                var pointsBox = new TextBox() { Size = textBox2.Size,
+                    Location = new Point(checkBox.Location.X + (textBox2.Location.X - checkBox1.Location.X), checkBox.Location.Y),
+                    Tag = Players.Count - 1,
+                    Enabled = false };
+
+                var deletebut = new Button() { Tag = Players.Count - 1 };
+
+                nameBox.Text = Players[Players.Count - 1].Name;
+                pointsBox.Text = "0";
+                Bitmap deleteImage = new Bitmap(20, 20);
+                {
+
+                    Graphics flagGraphics = Graphics.FromImage(deleteImage);
+
+
+                    var color = Color.Red;
+                    flagGraphics.DrawLine(new Pen(color), 0, 0, 20, 20);
+                    flagGraphics.DrawLine(new Pen(color), 0, 20, 20, 0);
+
+
+                }
+                ToolTip toolTip = new ToolTip();
+
+
+
+                toolTip.SetToolTip(deletebut, "Delete player");
+
+                deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
+                deletebut.Size = new Size(20, 20);
+                deletebut.Image = deleteImage;
+                deletebut.Click += DeletePlayerButton_Click;
+
+
+                nameBox.LostFocus += NameChange;
+
+                Controls.Add(nameBox);
+                Controls.Add(deletebut);
+                Controls.Add(pointsBox);
+                Controls.Add(checkBox);
+
+                var temp = LinkedItems(Players.Count - 2).Item2;
+                NewPlayerButton.Location = new Point(nameBox.Location.X,
+                    textBox3.Location.Y);
+
+              
+            }
+           else
+            {
+                Players.Add(new Player("Unnamed"));
+                int yForControls = NewPlayerButton.Location.Y;
+                var textBox1 = LinkedItems(25).Item2;
+                var textBox2 = LinkedItems(25).Item3;
+                var checkBox1 = LinkedItems(25).Item1;
+                var checkBox = new CheckBox()
+                {
+                    Size = checkBox1.Size,
+                    Location = new Point(checkBox1.Location.X, yForControls),
+                    Tag = Players.Count - 1
+                };
+                var nameBox = new TextBox() { Size = textBox1.Size, Location = new Point(textBox1.Location.X, yForControls), Tag = Players.Count - 1 };
+                var pointsBox = new TextBox() { Size = textBox2.Size, Location = new Point(textBox2.Location.X, yForControls), Tag = Players.Count - 1, Enabled = false };
+                var deletebut = new Button() { Tag = Players.Count - 1 };
+                nameBox.Text = Players[Players.Count - 1].Name;
+                pointsBox.Text = "0";
+                Bitmap deleteImage = new Bitmap(20, 20);
+                {
+
+                    Graphics flagGraphics = Graphics.FromImage(deleteImage);
+
+
+                    var color = Color.Red;
+                    flagGraphics.DrawLine(new Pen(color), 0, 0, 20, 20);
+                    flagGraphics.DrawLine(new Pen(color), 0, 20, 20, 0);
+
+
+                }
+                ToolTip toolTip = new ToolTip();
+
+
+
+                toolTip.SetToolTip(deletebut, "Delete player");
+
+                deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
+                deletebut.Size = new Size(20, 20);
+                deletebut.Image = deleteImage;
+                deletebut.Click += DeletePlayerButton_Click;
+
+
+                nameBox.LostFocus += NameChange;
+
+                Controls.Add(nameBox);
+                Controls.Add(deletebut);
+                Controls.Add(pointsBox);
+                Controls.Add(checkBox);
+
+                var temp = LinkedItems(Players.Count - 2).Item2;
+                NewPlayerButton.Location = new Point(NewPlayerButton.Location.X,
+                    NewPlayerButton.Location.Y + (NewPlayerButton.Location.Y - temp.Location.Y));
+            }
 
         }
+
+      
     }
 }
