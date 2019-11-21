@@ -30,10 +30,7 @@ namespace RangeList
             this.FormBorderStyle = FormBorderStyle.None;
             this.Load += RangeListForm_Load;
 
-            for (int i = 0; i < 16; i++)
-            {
-                Controls.OfType<CheckBox>().ElementAt(i).Checked = true;
-            }
+           
 
             
         }
