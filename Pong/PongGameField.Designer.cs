@@ -42,6 +42,7 @@
             // 
             // P1ScoreLabel
             // 
+            this.P1ScoreLabel.ForeColor = System.Drawing.Color.White;
             this.P1ScoreLabel.Location = new System.Drawing.Point(129, 9);
             this.P1ScoreLabel.Name = "P1ScoreLabel";
             this.P1ScoreLabel.Size = new System.Drawing.Size(75, 53);
@@ -52,6 +53,7 @@
             // P2ScoreLabel
             // 
             this.P2ScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.P2ScoreLabel.ForeColor = System.Drawing.Color.White;
             this.P2ScoreLabel.Location = new System.Drawing.Point(565, 9);
             this.P2ScoreLabel.Name = "P2ScoreLabel";
             this.P2ScoreLabel.Size = new System.Drawing.Size(75, 53);
@@ -63,6 +65,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.P2ScoreLabel);
             this.Controls.Add(this.P1ScoreLabel);

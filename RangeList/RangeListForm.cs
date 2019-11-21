@@ -28,10 +28,6 @@ namespace RangeList
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
             this.Load += RangeListForm_Load;
-
-           
-
-            
         }
 
         private void GenerateNewBoxes(int i)
