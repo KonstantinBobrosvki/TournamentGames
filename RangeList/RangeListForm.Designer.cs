@@ -132,6 +132,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.NewPlayerButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NewTournamentButton
@@ -978,12 +979,24 @@
             this.NewPlayerButton.UseVisualStyleBackColor = false;
             this.NewPlayerButton.Click += new System.EventHandler(this.NewPlayerButton_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(369, 80);
+            this.label7.TabIndex = 106;
+            this.label7.Text = "Here you can see list of players that can play in the \r\ntournament and their poin" +
+    "ts.\r\n\r\n ";
+            // 
             // RangeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1240, 690);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBox32);
             this.Controls.Add(this.checkBox31);
             this.Controls.Add(this.checkBox30);
@@ -1205,6 +1218,7 @@
         private System.Windows.Forms.CheckBox checkBox31;
         private System.Windows.Forms.CheckBox checkBox32;
         private System.Windows.Forms.Button NewPlayerButton;
+        private System.Windows.Forms.Label label7;
     }
 }
 

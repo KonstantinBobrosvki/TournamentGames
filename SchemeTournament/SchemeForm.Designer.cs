@@ -92,6 +92,8 @@
             this.State4_P2 = new System.Windows.Forms.Label();
             this.State4_P1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.FirstState.SuspendLayout();
             this.SecondState.SuspendLayout();
             this.ThirdState.SuspendLayout();
@@ -881,11 +883,34 @@
             this.label16.TabIndex = 40;
             this.label16.Text = "First match";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(371, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(277, 20);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Here is the schame of the tournament";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(645, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(961, 20);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "When you press the ,,Play match,, button the game will start. The first player is" +
+    " controlled by <W,A,S,D> and the other with the <arrows>.";
+            // 
             // SchemeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1864, 1061);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.FourthState);
             this.Controls.Add(this.ThirdState);
             this.Controls.Add(this.SecondState);
@@ -902,6 +927,7 @@
             this.FourthState.ResumeLayout(false);
             this.FourthState.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -971,6 +997,8 @@
         private System.Windows.Forms.Label State4_P2;
         private System.Windows.Forms.Label State4_P1;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
 

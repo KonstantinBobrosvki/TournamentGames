@@ -17,11 +17,6 @@ namespace SchemeTournament
         public SchemeForm(Tournament tournament)
         {
             this.WindowState = FormWindowState.Maximized; ;
-            
-            if (tournament.AllPlayers.Count > 16 || tournament.AllPlayers.Count < 16)
-            {
-                throw new ArgumentException("More/Less than 16 players");
-            }
             InitializeComponent();
             this.tournament = tournament;
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
@@ -40,12 +35,7 @@ namespace SchemeTournament
                         }
                     }
                 }
-
-                
-               
-
             }
-
             tournament.CreateRound();
             for (int i = 0; i <16; i++)
             {
@@ -61,6 +51,7 @@ namespace SchemeTournament
         private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
         {
             tournament.FinishRound();
+            MessageBox.Show("New round started !","INFO");
             tournament.CreateRound();
             if (tournament.CurrentRound == 2)
             {
@@ -121,9 +112,6 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(State2_P1.Size.ToString());
-            State2_P1.BackColor = Color.Red;
-            return;
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
         }
