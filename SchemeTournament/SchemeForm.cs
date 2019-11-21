@@ -26,8 +26,26 @@ namespace SchemeTournament
             this.tournament = tournament;
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
                 player6,player7,player8,player9,player10,player11,player12,player13,player14,player15,player16};
+            foreach (Control item in Controls)
+            {
+                if(item is GroupBox group)
+                {
+                    foreach (Control it in group.Controls)
+                    {
+                        if (it.Width == 0)
+                        {
+                         
+                            it.Size = new Size( 79, item.Height);
+                            it.Text = "Player";
+                        }
+                    }
+                }
 
-           
+                
+               
+
+            }
+
             tournament.CreateRound();
             for (int i = 0; i <16; i++)
             {
@@ -103,6 +121,9 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(State2_P1.Size.ToString());
+            State2_P1.BackColor = Color.Red;
+            return;
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
             name.Show();
         }

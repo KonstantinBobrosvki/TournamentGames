@@ -155,7 +155,11 @@ namespace Pong
             if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Right))
                 Player2.MoveRight();
 
-           
+            if(System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.Enter)&& System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
+            {
+                CurrentMatch.AddPoints(Player1.Account.ID);
+            }
+                 
             
             
         }
