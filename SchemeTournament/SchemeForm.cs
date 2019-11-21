@@ -17,7 +17,7 @@ namespace SchemeTournament
         public SchemeForm(Tournament tournament)
         {
             this.WindowState = FormWindowState.Maximized; ;
-            this.FormBorderStyle = FormBorderStyle.None;
+            
             if (tournament.AllPlayers.Count > 16 || tournament.AllPlayers.Count < 16)
             {
                 throw new ArgumentException("More/Less than 16 players");
