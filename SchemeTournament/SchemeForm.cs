@@ -89,11 +89,38 @@ namespace SchemeTournament
 
                 }
             }
+            FirstState.Location = new System.Drawing.Point(12, 3);
+            this.FirstState.Name = "FirstState";
+            this.FirstState.Size = new System.Drawing.Size(319, 1046);
+            this.SecondState.Location = new System.Drawing.Point(404, 0);
+            this.SecondState.Name = "SecondState";
+            this.SecondState.Size = new System.Drawing.Size(336, 693);
+            this.FourthState.Location = new System.Drawing.Point(807 + 298, 0);
+            this.FourthState.Name = "FourthState";
+            this.FourthState.Size = new System.Drawing.Size(350, 212);
+            this.ThirdState.Location = new System.Drawing.Point(807, 0);
+            this.ThirdState.Name = "ThirdState";
+            this.ThirdState.Size = new System.Drawing.Size(298, 340);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-         
+            FirstState.Location = new System.Drawing.Point(12, 3);
+            this.FirstState.Name = "FirstState";
+            this.FirstState.Size = new System.Drawing.Size(319, 1046);
+            this.SecondState.Location = new System.Drawing.Point(404, 0);
+            this.SecondState.Name = "SecondState";
+            this.SecondState.Size = new System.Drawing.Size(336, 693);
+            this.FourthState.Location = new System.Drawing.Point(807+298, 0);
+            this.FourthState.Name = "FourthState";
+            this.FourthState.Size = new System.Drawing.Size(350, 212);
+            this.ThirdState.Location = new System.Drawing.Point(807, 0);
+            this.ThirdState.Name = "ThirdState";
+            this.ThirdState.Size = new System.Drawing.Size(298, 340);
+            ScrollBar vScrollBar1 = new VScrollBar();
+            vScrollBar1.Dock = DockStyle.Right;
+            vScrollBar1.Scroll += (sender1, e1) => { FirstState.Location = new Point(12, -5 * vScrollBar1.Value); };
+            FirstState.Controls.Add(vScrollBar1);
         }
 
         private void label4_Click(object sender, EventArgs e)
