@@ -577,11 +577,6 @@ namespace RangeList
                 MessageBox.Show("Max are 49 players");
                 return;
             }
-
         }
-
-      
-
-       
     }
 }

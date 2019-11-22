@@ -19,8 +19,8 @@ namespace SchemeTournament
             
             this.WindowState = FormWindowState.Maximized;
             //TODO: Delete this befroe competition
-            //Ако  ще изтриеш този ред венци ще ти навра чадъра на габито отзад
-            this.FormBorderStyle = FormBorderStyle.None;
+            //Ако  ще изтриеш този ред венци ще ти навра чадъра на габито отзад // НЯМА ДА ПОСМЕЕЕЕЕШШШШШШ АЗ ПЪРВИ ЩЕ ТИ ГО НАВРА.
+            
             InitializeComponent();
             this.tournament = tournament;
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
@@ -163,9 +163,8 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
-          
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
-            name.CurrentMatch.WinEvent+=(s,a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
             name.Show();
         }
 
@@ -173,7 +172,6 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][1]);
             name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
-
             name.Show();
         }
 
@@ -181,7 +179,6 @@ namespace SchemeTournament
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][2]);
             name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
-
             name.Show();
         }
 
@@ -204,61 +201,120 @@ namespace SchemeTournament
         private void SixthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][5]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
             name.Show();
         }
 
         private void SeventhGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][6]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
             name.Show();
         }
 
         private void EighthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][7]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
             name.Show();
         }
         
         private void State2_Grup1Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][0]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[2][0]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
 
         private void State2_Grup2Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][1]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[2][1]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
 
         private void State2_Grup3Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][2]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[2][2]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[2][3]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[2][3]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
        
         private void State3_Grup1Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[3][0]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[3][0]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
 
         private void State3_Grup2Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[3][1]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[3][1]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
 
         private void State4_Grup1Button_Click(object sender, EventArgs e)
         {
-            PongGameField name = new PongGameField(tournament.Rounds[4][0]);
-            name.Show();
+            try
+            {
+                PongGameField name = new PongGameField(tournament.Rounds[4][0]);
+                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Mach is not created already !");
+            }
         }
     }
 }
