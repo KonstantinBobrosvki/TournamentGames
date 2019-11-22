@@ -515,9 +515,7 @@
             // 
             // SecondState
             // 
-            this.SecondState.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SecondState.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SecondState.Controls.Add(this.button1);
             this.SecondState.Controls.Add(this.State2_P8);
             this.SecondState.Controls.Add(this.State2_P7);

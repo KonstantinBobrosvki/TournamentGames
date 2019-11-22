@@ -16,7 +16,11 @@ namespace SchemeTournament
         public Tournament tournament;
         public SchemeForm(Tournament tournament)
         {
-            this.WindowState = FormWindowState.Maximized; ;
+            
+            this.WindowState = FormWindowState.Maximized;
+            //TODO: Delete this befroe competition
+            //Ако  ще изтриеш този ред венци ще ти навра чадъра на габито отзад
+            this.FormBorderStyle = FormBorderStyle.None;
             InitializeComponent();
             this.tournament = tournament;
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
@@ -51,7 +55,6 @@ namespace SchemeTournament
         private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
         {
             tournament.FinishRound();
-            MessageBox.Show("New round started !","INFO");
             tournament.CreateRound();
             if (tournament.CurrentRound == 2)
             {
@@ -92,13 +95,13 @@ namespace SchemeTournament
             FirstState.Location = new System.Drawing.Point(12, 3);
             this.FirstState.Name = "FirstState";
             this.FirstState.Size = new System.Drawing.Size(319, 1046);
-            this.SecondState.Location = new System.Drawing.Point(404, 0);
+            this.SecondState.Location = new System.Drawing.Point(404, 179);
             this.SecondState.Name = "SecondState";
             this.SecondState.Size = new System.Drawing.Size(336, 693);
-            this.FourthState.Location = new System.Drawing.Point(807 + 298, 0);
+            this.FourthState.Location = new System.Drawing.Point(1191, 420);
             this.FourthState.Name = "FourthState";
             this.FourthState.Size = new System.Drawing.Size(350, 212);
-            this.ThirdState.Location = new System.Drawing.Point(807, 0);
+            this.ThirdState.Location = new System.Drawing.Point(807, 357);
             this.ThirdState.Name = "ThirdState";
             this.ThirdState.Size = new System.Drawing.Size(298, 340);
         }
@@ -108,19 +111,40 @@ namespace SchemeTournament
             FirstState.Location = new System.Drawing.Point(12, 3);
             this.FirstState.Name = "FirstState";
             this.FirstState.Size = new System.Drawing.Size(319, 1046);
-            this.SecondState.Location = new System.Drawing.Point(404, 0);
+            this.SecondState.Location = new System.Drawing.Point(404, 179);
             this.SecondState.Name = "SecondState";
             this.SecondState.Size = new System.Drawing.Size(336, 693);
-            this.FourthState.Location = new System.Drawing.Point(807+298, 0);
+            this.FourthState.Location = new System.Drawing.Point(1191, 420);
             this.FourthState.Name = "FourthState";
             this.FourthState.Size = new System.Drawing.Size(350, 212);
-            this.ThirdState.Location = new System.Drawing.Point(807, 0);
+            this.ThirdState.Location = new System.Drawing.Point(807, 357);
             this.ThirdState.Name = "ThirdState";
             this.ThirdState.Size = new System.Drawing.Size(298, 340);
             ScrollBar vScrollBar1 = new VScrollBar();
             vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Scroll += (sender1, e1) => { FirstState.Location = new Point(12, -5 * vScrollBar1.Value); };
-            FirstState.Controls.Add(vScrollBar1);
+           
+            vScrollBar1.Scroll += (sender1, e1) => {
+
+
+                FirstState.Top = 3-vScrollBar1.Value*6;
+                SecondState.Top = 179-vScrollBar1.Value*6;
+                ThirdState.Top = 357 - vScrollBar1.Value * 6;
+                FourthState.Top = 420 - vScrollBar1.Value * 6;
+
+            };
+            ScrollBar hScrollBar = new HScrollBar();
+            hScrollBar.Dock = DockStyle.Bottom;
+            hScrollBar.Scroll += (sender1, e1) => {
+
+
+                 FirstState.Left = 12 - hScrollBar.Value * 6;
+                 SecondState.Left = 404 - hScrollBar.Value * 6;
+                 ThirdState.Left = 807 - hScrollBar.Value * 6;
+                 FourthState.Left = 1191 - hScrollBar.Value * 6;
+
+             };
+            Controls.Add(vScrollBar1);
+            Controls.Add(hScrollBar);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -139,31 +163,41 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
+          
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
+            name.CurrentMatch.WinEvent+=(s,a) => ((Button)sender).Enabled = false;
             name.Show();
         }
 
         private void SecondGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][1]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+
             name.Show();
         }
 
         private void ThirdGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][2]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+
             name.Show();
         }
 
         private void FourthGrupBoutton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][3]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+
             name.Show();
         }
 
         private void FifthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][4]);
+            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+
             name.Show();
         }
 
