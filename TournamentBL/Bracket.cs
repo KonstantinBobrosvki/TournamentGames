@@ -51,6 +51,8 @@ namespace TournamentBL
                 wonRoundP1 = value;
                 PlayerOne.WinsRounds++;
                 PlayerTwo.LoseRounds++;
+                if (wonRoundP1 == 3)
+                    PlayerOne.WinsGames++;
                 WinRoundEvent?.Invoke(this, new WinnedRoundEventArgs(PlayerOne, WonRoundP1, PlayerTwo));
 
 
@@ -70,6 +72,8 @@ namespace TournamentBL
                 wonRoundP2 = value;
                 PlayerTwo.WinsRounds++;
                 PlayerOne.LoseRounds++;
+                if (wonRoundP2 == 3)
+                    PlayerTwo.WinsGames++;
                 WinRoundEvent?.Invoke(this, new WinnedRoundEventArgs(PlayerTwo, WonRoundP2, PlayerOne));
 
             }

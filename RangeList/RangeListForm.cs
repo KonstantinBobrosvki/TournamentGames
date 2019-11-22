@@ -27,6 +27,7 @@ namespace RangeList
             
             StandartSize = new Size(Width, Height);
             this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.Load += RangeListForm_Load;
         }
 
@@ -86,7 +87,9 @@ namespace RangeList
                     LinkedItems(i-25).Item2.Location.Y);
 
             }
-           
+            NewPlayerButton.Location = new Point(NewPlayerButton.Location.X,
+                   LinkedItems(i - 25).Item2.Location.Y);
+
         }
 
         private void RangeListForm_Load(object sender, EventArgs e)
@@ -171,12 +174,20 @@ namespace RangeList
                 {
                    Players= formatter.Deserialize(fs) as List<Player>;
                 }
-
-                GenerateNewBoxes(32);
-
-                
-              
-
+                if (Players.Count > 32)
+                    GenerateNewBoxes(32);
+                else
+                {
+                    NewPlayerButton.Location=LinkedItems(Players.Count).Item2.Location;
+                    for (int i = Players.Count; i < 32; i++)
+                    {
+                        var t = LinkedItems(i);
+                        Controls.Remove(t.Item1);
+                        Controls.Remove(t.Item2);
+                        Controls.Remove(t.Item3);
+                        Controls.Remove(t.Item4);
+                    }
+                }
                 for (int i = 0; i < Players.Count; i++)
                 {
                     var item = Players[i];
@@ -184,17 +195,6 @@ namespace RangeList
                     r.Item2.Text = item.Name;
                     r.Item3.Text = item.WinsGames.ToString();
                 }
-                
-
-                for (int i = Players.Count; i < 32; i++)
-                {
-                    var t = LinkedItems(i);
-                    Controls.Remove(t.Item1);
-                    Controls.Remove(t.Item2);
-                    Controls.Remove(t.Item3);
-                    Controls.Remove(t.Item4);
-                }
-
             }
             else
             {
@@ -331,23 +331,21 @@ namespace RangeList
           
             this.Hide();
             ShowInTaskbar = false;
-            scheme = new SchemeTournament.SchemeForm(tour);
+           var scheme = new SchemeTournament.SchemeForm(tour);
+            tour.TournamentFinishedEvent += (s,e1)=> {
+                var obj = sender as Tournament;
+                scheme.Close();
+                for (int i = 0; i < Players.Count; i++)
+                {
+                    LinkedItems(i).Item3.Text = Players[i].WinsGames.ToString();
+                }
+            };
             scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
-            tour.TournamentFinishedEvent += Tour_TournamentFinishedEvent;
             scheme.Show();
 
 
         }
-        SchemeTournament.SchemeForm scheme;
-        private void Tour_TournamentFinishedEvent(object sender, EventArgs e)
-        {
-            var obj = sender as Tournament;
-            scheme.Close();
-            for (int i = 0; i < Players.Count; i++)
-            {
-                LinkedItems(i).Item3.Text = Players[i].WinsGames.ToString();
-            }
-        }
+       
 
         private void FillRandomNames()
         {
@@ -521,7 +519,7 @@ namespace RangeList
 
               
             }
-           else
+           else if(Players.Count<49)
             {
                 Players.Add(new Player("Unnamed"));
                 int yForControls = NewPlayerButton.Location.Y;
@@ -574,12 +572,16 @@ namespace RangeList
                 NewPlayerButton.Location = new Point(NewPlayerButton.Location.X,
                     NewPlayerButton.Location.Y + (NewPlayerButton.Location.Y - temp.Location.Y));
             }
+           else
+            {
+                MessageBox.Show("Max are 49 players");
+                return;
+            }
 
         }
 
-        private void RangeListForm_Load_1(object sender, EventArgs e)
-        {
+      
 
-        }
+       
     }
 }
