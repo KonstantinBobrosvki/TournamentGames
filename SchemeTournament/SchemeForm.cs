@@ -16,11 +16,14 @@ namespace SchemeTournament
         public Tournament tournament;
         public SchemeForm(Tournament tournament)
         {
+            KeyPreview = true;
+           
             
             this.WindowState = FormWindowState.Maximized;
             //TODO: Delete this befroe competition
-            //Ако  ще изтриеш този ред венци ще ти навра чадъра на габито отзад // НЯМА ДА ПОСМЕЕЕЕЕШШШШШШ АЗ ПЪРВИ ЩЕ ТИ ГО НАВРА.
-            
+            //Ако  ще изтриеш този ред венци ще ти навра чадъра на габито отзад // НЯМА ДА ПОСМЕЕЕЕЕШШШШШШ АЗ ПЪРВИ ЩЕ ТИ ГО НАВРА.//Ще купя вазелин за да ти го вра по-лесно
+            this.FormBorderStyle = FormBorderStyle.None;
+
             InitializeComponent();
             this.tournament = tournament;
             List<Label> StartLabels = new List<Label>{player1,player2,player3,player4,player5,
@@ -50,6 +53,17 @@ namespace SchemeTournament
 
             }
             tournament.RoundFinishedEvent += Tournament_RoundFinishedEvent;
+            KeyUp += (s, e) => {
+
+                if (e.KeyCode != Keys.Escape)
+                    return;
+                var res = MessageBox.Show("Do you want to abort tournament", "Exit window", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                    this.Close();
+                else
+                    MessageBox.Show("Good choice");
+            };
+
         }
 
         private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
@@ -163,29 +177,33 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
+
+
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };
+            this.ShowInTaskbar = false;
+            this.Hide();
             name.Show();
         }
 
         private void SecondGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][1]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
         }
 
         private void ThirdGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][2]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
         }
 
         private void FourthGrupBoutton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][3]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
 
             name.Show();
         }
@@ -193,7 +211,7 @@ namespace SchemeTournament
         private void FifthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][4]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
 
             name.Show();
         }
@@ -201,21 +219,21 @@ namespace SchemeTournament
         private void SixthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][5]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
         }
 
         private void SeventhGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][6]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
         }
 
         private void EighthGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][7]);
-            name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
         }
         
@@ -224,7 +242,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[2][0]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -238,7 +256,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[2][1]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -252,7 +270,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[2][2]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -266,7 +284,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[2][3]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -280,7 +298,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[3][0]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -294,7 +312,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[3][1]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch
@@ -308,7 +326,7 @@ namespace SchemeTournament
             try
             {
                 PongGameField name = new PongGameField(tournament.Rounds[4][0]);
-                name.CurrentMatch.WinEvent += (s, a) => ((Button)sender).Enabled = false;
+                name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
             }
             catch

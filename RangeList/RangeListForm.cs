@@ -329,8 +329,9 @@ namespace RangeList
             Tournament tour = new Tournament(pl);
             
           
-            this.Hide();
+           
             ShowInTaskbar = false;
+            
            var scheme = new SchemeTournament.SchemeForm(tour);
             tour.TournamentFinishedEvent += (s,e1)=> {
                 var obj = sender as Tournament;
@@ -341,6 +342,7 @@ namespace RangeList
                 }
             };
             scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
+            this.Hide();
             scheme.Show();
 
 
