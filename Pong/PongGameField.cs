@@ -24,7 +24,7 @@ namespace Pong
 
         public PongGameField(Match match)
         {
-            
+            Icon = Resources.Resources.green_tennis_ball;
            
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.WindowState = FormWindowState.Maximized;
@@ -60,15 +60,8 @@ namespace Pong
             Random random = new Random(Guid.NewGuid().GetHashCode());
             var x = random.Next(Screen.PrimaryScreen.WorkingArea.Width / 3, Screen.PrimaryScreen.WorkingArea.Width / 3 * 2);
             var y = random.Next(100, Screen.PrimaryScreen.WorkingArea.Height -100);
-            Interactable bonus = null ;
-            if(random.Next(0,2)==0)
-            {
-                bonus = new SmallerBonus(new Point(x, y));
-            }
-            else
-            {
-                bonus = new BiggerBonus(new Point(x, y));
-            }
+            Bonus bonus = Bonus.RandomBonus(new Point(x,y)) ;
+           
             Interactables.Add(bonus);
         }
 

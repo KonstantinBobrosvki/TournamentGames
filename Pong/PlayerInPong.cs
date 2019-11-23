@@ -48,6 +48,7 @@ namespace Pong
         {
          
             Hero= new Bitmap(Resources.Resources.Rocket, box.Size);
+            ((Bitmap)Hero).MakeTransparent();
             SpeedY = 20;
         }
 

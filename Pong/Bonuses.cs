@@ -16,6 +16,31 @@ namespace Pong
 
         }
 
+        public static Bonus RandomBonus(Point p)
+        {
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+            var res = random.Next(0, 4);
+            switch (res)
+            {
+                case 0:
+                    return new SmallerBonus(p);
+                    break;
+                case 1:
+                    return new BiggerBonus(p);
+                    break;
+                case 2:
+                    return new SpeedUpBonus(p);
+                    break;
+                case 3:
+                    return new SpeedDownBonus(p);
+                    break;  
+                default:
+                    throw new Exception();
+                    break;
+            }
+        }
+
+
         protected void ReturnToNormal(Action<AbstaractGamer,AbstaractGamer > action,AbstaractGamer p1,AbstaractGamer p2)
         {
             Timer timer = new Timer
@@ -48,6 +73,7 @@ namespace Pong
                 gamer.ChangeSize(new Size(gamer.Hero.Size.Width, gamer.Hero.Height + 100));
                 timer.Stop();
                 timer.Dispose();
+                
             };
         }
 
@@ -58,13 +84,8 @@ namespace Pong
 
         public SmallerBonus(Point p):base(p)
         {
-            Bitmap flag = new Bitmap(80, 80);
-
-            Graphics flagGraphics = Graphics.FromImage(flag);
-
-            flagGraphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 0, 0)), new Rectangle(0, 0, 80, 80));
-
-            Skin = flag;
+            Skin =new Bitmap( Resources.Resources.ZoomOut,new Size(80,80));
+            ((Bitmap)Skin).MakeTransparent();
         }
     }
 
@@ -95,13 +116,75 @@ namespace Pong
 
         public BiggerBonus(Point p) : base(p)
         {
-            Bitmap flag = new Bitmap(80, 80);
-
-            Graphics flagGraphics = Graphics.FromImage(flag);
-
-            flagGraphics.FillRectangle(new SolidBrush(Color.FromArgb(0,255, 0)), new Rectangle(0, 0, 80, 80));
-
-            Skin = flag;
+            Skin = new Bitmap(Resources.Resources.ZoomIn, new Size(80, 80));
+            ((Bitmap)Skin).MakeTransparent();
         }
     }
+
+    public class SpeedUpBonus : Bonus
+    {
+        public override Image Skin { get; protected set; }
+
+        public override void OnColision(AbstaractGamer gamer, AbstaractGamer otherGamer)
+        {
+            gamer.SpeedY *= 2;
+            Timer timer = new Timer
+            {
+                Interval = 10000
+            };
+            timer.Start();
+            timer.Tick += (s, e) => {
+                gamer.SpeedY/=2;
+                timer.Stop();
+                timer.Dispose();
+
+            };
+
+        }
+
+        public override void OnColision()
+        {
+            throw new NotImplementedException();
+        }
+
+        public SpeedUpBonus(Point p):base(p)
+        {
+            Skin = new Bitmap(Resources.Resources.ArrowUp, new Size(80, 80));
+            ((Bitmap)Skin).MakeTransparent();
+        }
+    }
+
+    public class SpeedDownBonus : Bonus
+    {
+        public override Image Skin { get; protected set; }
+
+        public override void OnColision(AbstaractGamer gamer, AbstaractGamer otherGamer)
+        {
+            otherGamer.SpeedY /= 2;
+            Timer timer = new Timer
+            {
+                Interval = 10000
+            };
+            timer.Start();
+            timer.Tick += (s, e) => {
+                otherGamer.SpeedY *= 2;
+                timer.Stop();
+                timer.Dispose();
+
+            };
+        }
+
+        public override void OnColision()
+        {
+            throw new NotImplementedException();
+        }
+
+        public SpeedDownBonus(Point p) : base(p)
+        {
+
+            Skin = new Bitmap(Resources.Resources.ArrowDown, new Size(80, 80));
+            ((Bitmap)Skin).MakeTransparent();
+        }
+    }
+
 }

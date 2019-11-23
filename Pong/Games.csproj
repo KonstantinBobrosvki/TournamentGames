@@ -105,7 +105,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ZoomOut.png" />
+    <None Include="Resources\ZoomIn.png" />
     <None Include="Resources\Cort.jpg" />
+    <None Include="Resources\green_tennis_ball.ico" />
+    <None Include="Resources\ArrowDown.png" />
+    <None Include="Resources\ArrowUp.png" />
     <Content Include="Resources\Rocket.png" />
     <None Include="Resources\Udar.wav" />
   </ItemGroup>

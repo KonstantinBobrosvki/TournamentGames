@@ -16,6 +16,7 @@ namespace SchemeTournament
         public Tournament tournament;
         public SchemeForm(Tournament tournament)
         {
+            Icon = Resource1.Icon1;
             KeyPreview = true;
            
             

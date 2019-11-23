@@ -21,6 +21,7 @@ namespace RangeList
 
         public RangeListForm()
         {
+            this.Icon = Resourcses.Icon1;
             KeyPreview = true;
 
             InitializeComponent();

@@ -13,8 +13,8 @@ namespace Pong
     public abstract class AbstaractGamer
     {
         public abstract Image BackGround { get;  }
-        public int SpeedX { get; protected set; }
-        public int SpeedY { get; protected set; }
+        public int SpeedX { get; internal set; }
+        public int SpeedY { get; internal set; }
         public Image Hero { get; protected set; }
         public Player Account { get; }
         public Point Position { get; protected set; }

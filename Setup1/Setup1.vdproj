@@ -1,4 +1,4 @@
-п»ї"DeployProject"
+"DeployProject"
 {
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
@@ -488,7 +488,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6936C5CB6E2E4EC2BDE648BACA5E8780"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Р“РѕС‚РѕРІРѕ"
+                    "DisplayName" = "8:Готово"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -532,7 +532,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E8889F972D914D75AC13418C1941E3AF"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:РҐРѕРґ РІС‹РїРѕР»РЅРµРЅРёСЏ"
+                    "DisplayName" = "8:Ход выполнения"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -576,7 +576,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_C0910AA58B12443D83FEA359B648EE3A"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Р“РѕС‚РѕРІРѕ"
+                    "DisplayName" = "8:Готово"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -607,7 +607,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_656565FD4A964AECB29C93FD0986E04C"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІРєРё"
+                    "DisplayName" = "8:Подтвърждение"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -629,7 +629,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_858E82F2165C4267891F5C6301063D3D"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:РџР°РїРєР° СѓСЃС‚Р°РЅРѕРІРєРё"
+                    "DisplayName" = "8:Папка за инсталация"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -651,7 +651,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F3ACE148000547289E476FA549F8E835"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!"
+                    "DisplayName" = "8:Здравейте!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -714,7 +714,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E2746B253D5E4EBB9BE199CF28DA3A89"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:РҐРѕРґ РІС‹РїРѕР»РЅРµРЅРёСЏ"
+                    "DisplayName" = "8:Изпълнение"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -758,7 +758,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_58842CF948984B939F17EEF61755E4FA"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІРєРё"
+                    "DisplayName" = "8:Подтвърждение за инсталация"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -780,7 +780,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5E95517B42B8453EB876B0E0CC90D281"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!"
+                    "DisplayName" = "8:Здравейте!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -828,7 +828,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_EAD35BFDE22D44C8AF66A849C88A1D5D"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:РџР°РїРєР° СѓСЃС‚Р°РЅРѕРІРєРё"
+                    "DisplayName" = "8:Папка за инсталация"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
