@@ -318,7 +318,7 @@ namespace RangeList
         }
 
         private void NewTournamentButton_Click(object sender, EventArgs e)
-        {
+        {        
             var c = Controls.OfType<CheckBox>().Where(x =>x.Checked).Select(x=> (int)x.Tag).ToList();
             List<Player> pl = new List<Player>(16);
             if (c.Count != 16)
@@ -593,25 +593,23 @@ namespace RangeList
 
         private void Sort()
         {
-            //For future
-            return;
-            var point = new List<Point[]>(Players.Count);
-            var scores = new Dictionary<int,int>();
-            for (int i = 0; i < Players.Count; i++)
-            {
-                var res = LinkedItems(i);
-                point.Add( new Point[4] { res.Item1.Location, res.Item2.Location, res.Item3.Location, res.Item4.Location });
-                scores.Add(i,int.Parse(res.Item3.Text));
-            }
-            var NScores = scores.ToList().OrderByDescending(x=>x.Value).ToList();
 
+
+            List<(CheckBox, TextBox, TextBox, Button)> allPlayersView = new List<(CheckBox, TextBox, TextBox, Button)>(Players.Count);
             for (int i = 0; i < Players.Count; i++)
             {
-                var res = LinkedItems(NScores[i].Key);
-                res.Item1.Location = point[i][0];
-                res.Item2.Location = point[i][1];
-                res.Item3.Location = point[i][2];
-                res.Item4.Location = point[i][3];
+                allPlayersView.Add(LinkedItems(i));
+            }
+            Players.Sort((x, y) =>-1*x.WinsGames.CompareTo(y.WinsGames));
+            for (int i = 0; i < Players.Count; i++)
+            {
+                var item = allPlayersView[i];
+                item.Item1.Tag = i;
+                item.Item2.Tag = i;
+                item.Item3.Tag = i;
+                item.Item4.Tag = i;
+                item.Item2.Text = Players[i].Name;
+                item.Item3.Text = Players[i].WinsGames.ToString();
 
             }
 
