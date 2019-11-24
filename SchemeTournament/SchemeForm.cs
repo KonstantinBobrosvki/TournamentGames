@@ -178,20 +178,44 @@ namespace SchemeTournament
         }
         private void FirstGrupButton_Click(object sender, EventArgs e)
         {
-
-
             PongGameField name = new PongGameField(tournament.Rounds[1][0]);
-            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };
+            name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show();};
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player1.BackColor = Color.Green;
+                    player2.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player1.BackColor = Color.Red;
+                    player2.BackColor = Color.Green;
+                }
+            };
+                
             this.ShowInTaskbar = false;
             this.Hide();
             name.Show();
         }
-
         private void SecondGrupButton_Click(object sender, EventArgs e)
         {
             PongGameField name = new PongGameField(tournament.Rounds[1][1]);
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player3.BackColor = Color.Green;
+                    player4.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player3.BackColor = Color.Red;
+                    player4.BackColor = Color.Green;
+                }
+            };
         }
 
         private void ThirdGrupButton_Click(object sender, EventArgs e)
@@ -199,6 +223,19 @@ namespace SchemeTournament
             PongGameField name = new PongGameField(tournament.Rounds[1][2]);
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player5.BackColor = Color.Green;
+                    player6.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player5.BackColor = Color.Red;
+                    player6.BackColor = Color.Green;
+                }
+            };
         }
 
         private void FourthGrupBoutton_Click(object sender, EventArgs e)
@@ -207,6 +244,19 @@ namespace SchemeTournament
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
 
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player7.BackColor = Color.Green;
+                    player8.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player7.BackColor = Color.Red;
+                    player8.BackColor = Color.Green;
+                }
+            };
         }
 
         private void FifthGrupButton_Click(object sender, EventArgs e)
@@ -215,6 +265,19 @@ namespace SchemeTournament
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
 
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player9.BackColor = Color.Green;
+                    player10.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player9.BackColor = Color.Red;
+                    player10.BackColor = Color.Green;
+                }
+            };
         }
 
         private void SixthGrupButton_Click(object sender, EventArgs e)
@@ -222,6 +285,19 @@ namespace SchemeTournament
             PongGameField name = new PongGameField(tournament.Rounds[1][5]);
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player11.BackColor = Color.Green;
+                    player12.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player11.BackColor = Color.Red;
+                    player12.BackColor = Color.Green;
+                }
+            };
         }
 
         private void SeventhGrupButton_Click(object sender, EventArgs e)
@@ -229,6 +305,19 @@ namespace SchemeTournament
             PongGameField name = new PongGameField(tournament.Rounds[1][6]);
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player13.BackColor = Color.Green;
+                    player14.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player13.BackColor = Color.Red;
+                    player14.BackColor = Color.Green;
+                }
+            };
         }
 
         private void EighthGrupButton_Click(object sender, EventArgs e)
@@ -236,6 +325,19 @@ namespace SchemeTournament
             PongGameField name = new PongGameField(tournament.Rounds[1][7]);
             name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
             name.Show();
+            name.CurrentMatch.WinEvent += (s, a) =>
+            {
+                if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                {
+                    player15.BackColor = Color.Green;
+                    player16.BackColor = Color.Red;
+                }
+                else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                {
+                    player15.BackColor = Color.Red;
+                    player16.BackColor = Color.Green;
+                }
+            };
         }
         
         private void State2_Grup1Button_Click(object sender, EventArgs e)
@@ -245,6 +347,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[2][0]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State2_P1.BackColor = Color.Green;
+                        State2_P2.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State2_P1.BackColor = Color.Red;
+                        State2_P2.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -259,6 +374,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[2][1]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State2_P3.BackColor = Color.Green;
+                        State2_P4.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State2_P3.BackColor = Color.Red;
+                        State2_P4.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -273,6 +401,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[2][2]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State2_P5.BackColor = Color.Green;
+                        State2_P6.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State2_P5.BackColor = Color.Red;
+                        State2_P6.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -287,6 +428,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[2][3]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State2_P7.BackColor = Color.Green;
+                        State2_P8.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State2_P7.BackColor = Color.Red;
+                        State2_P8.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -301,6 +455,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[3][0]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State3_P1.BackColor = Color.Green;
+                        State3_P2.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State3_P1.BackColor = Color.Red;
+                        State3_P2.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -315,6 +482,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[3][1]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State3_P3.BackColor = Color.Green;
+                        State3_P4.BackColor = Color.Red;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State3_P3.BackColor = Color.Red;
+                        State3_P4.BackColor = Color.Green;
+                    }
+                };
             }
             catch
             {
@@ -329,6 +509,19 @@ namespace SchemeTournament
                 PongGameField name = new PongGameField(tournament.Rounds[4][0]);
                 name.CurrentMatch.WinEvent += (s, a) => { ((Button)sender).Enabled = false;ShowInTaskbar = true;Show(); };ShowInTaskbar=false;Hide();
                 name.Show();
+                name.CurrentMatch.WinEvent += (s, a) =>
+                {
+                    if (a.Winner.ID == name.CurrentMatch.PlayerOne.ID)
+                    {
+                        State4_P1.BackColor = Color.Gold;
+                        State4_P2.BackColor = Color.Silver;
+                    }
+                    else if (name.CurrentMatch.WinnerID == name.CurrentMatch.PlayerTwo.ID)
+                    {
+                        State4_P1.BackColor = Color.Silver;
+                        State4_P2.BackColor = Color.Gold;
+                    }
+                };
             }
             catch
             {

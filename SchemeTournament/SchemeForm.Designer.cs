@@ -138,7 +138,7 @@
             this.FirstState.Controls.Add(this.player1);
             this.FirstState.Location = new System.Drawing.Point(12, 3);
             this.FirstState.Name = "FirstState";
-            this.FirstState.Size = new System.Drawing.Size(319, 1046);
+            this.FirstState.Size = new System.Drawing.Size(319, 1055);
             this.FirstState.TabIndex = 1;
             this.FirstState.TabStop = false;
             // 
