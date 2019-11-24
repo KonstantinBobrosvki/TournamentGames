@@ -174,10 +174,12 @@ namespace RangeList
                 using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\peoples.dat", FileMode.Open, FileAccess.ReadWrite))
                 {
                    Players= formatter.Deserialize(fs) as List<Player>;
-                    for (int i = 0; i < Players.Count; i++)
+                    var max = Players.Select(x => x.ID).Max();
+                    for (int i = 0; i <max+1; i++)
                     {
                         new Player("GG");
                     }
+                    var temp = new Player("GG");
                 }
                 if (Players.Count >= 32)
                     GenerateNewBoxes(32);
@@ -339,14 +341,18 @@ namespace RangeList
             
            var scheme = new SchemeTournament.SchemeForm(tour);
             tour.TournamentFinishedEvent += (s,e1)=> {
-                var obj = sender as Tournament;
+                var obj = s as Tournament;
                 scheme.Close();
+               
+            };
+            scheme.Closing += (s, a) => {
+
+                this.Show(); this.ShowInTaskbar = true;
                 for (int i = 0; i < Players.Count; i++)
                 {
                     LinkedItems(i).Item3.Text = Players[i].WinsGames.ToString();
                 }
             };
-            scheme.Closing += (s, a) => { this.Show(); this.ShowInTaskbar = true; };
             this.Hide();
             scheme.Show();
 
