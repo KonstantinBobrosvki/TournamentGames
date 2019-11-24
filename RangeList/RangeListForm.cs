@@ -202,7 +202,7 @@ namespace RangeList
                     var r = LinkedItems(i);
                     r.Item2.Text = item.Name;
                     r.Item3.Text = item.WinsGames.ToString();
-                }
+                }            
             }
             else
             {
@@ -340,11 +340,6 @@ namespace RangeList
             ShowInTaskbar = false;
             
            var scheme = new SchemeTournament.SchemeForm(tour);
-            tour.TournamentFinishedEvent += (s,e1)=> {
-                var obj = s as Tournament;
-                scheme.Close();
-               
-            };
             scheme.Closing += (s, a) => {
 
                 this.Show(); this.ShowInTaskbar = true;
@@ -352,6 +347,8 @@ namespace RangeList
                 {
                     LinkedItems(i).Item3.Text = Players[i].WinsGames.ToString();
                 }
+                Sort();
+                WindowState = FormWindowState.Maximized;
             };
             this.Hide();
             scheme.Show();
@@ -530,9 +527,9 @@ namespace RangeList
 
                 var temp = LinkedItems(Players.Count - 2).Item2;
                 NewPlayerButton.Location = new Point(nameBox.Location.X,
-                    textBox3.Location.Y);
+                   textBox3.Location.Y);
 
-              
+
             }
            else if(Players.Count<49)
             {
@@ -592,6 +589,32 @@ namespace RangeList
                 MessageBox.Show("Max are 49 players");
                 return;
             }
+        }
+
+        private void Sort()
+        {
+            
+            var point = new List<Point[]>(Players.Count);
+            var scores = new Dictionary<int,int>();
+            for (int i = 0; i < Players.Count; i++)
+            {
+                var res = LinkedItems(i);
+                point.Add( new Point[4] { res.Item1.Location, res.Item2.Location, res.Item3.Location, res.Item4.Location });
+                scores.Add(i,int.Parse(res.Item3.Text));
+            }
+            var NScores = scores.ToList().OrderByDescending(x=>x.Value).ToList();
+
+            for (int i = 0; i < Players.Count; i++)
+            {
+                var res = LinkedItems(NScores[i].Key);
+                res.Item1.Location = point[i][0];
+                res.Item2.Location = point[i][1];
+                res.Item3.Location = point[i][2];
+                res.Item4.Location = point[i][3];
+
+            }
+
+
         }
     }
 }

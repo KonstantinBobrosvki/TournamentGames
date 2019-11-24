@@ -94,6 +94,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.FirstState.SuspendLayout();
             this.SecondState.SuspendLayout();
             this.ThirdState.SuspendLayout();
@@ -902,11 +903,22 @@
             this.label12.Text = "When you press the ,,Play match,, button the game will start. The first player is" +
     " controlled by <W,A,S,D> and the other with the <arrows>.";
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Location = new System.Drawing.Point(1026, 822);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(327, 129);
+            this.ExitButton.TabIndex = 29;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
             // SchemeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1864, 1061);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.FourthState);
@@ -999,6 +1011,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button ExitButton;
     }
 }
 

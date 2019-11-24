@@ -65,6 +65,8 @@ namespace SchemeTournament
                     MessageBox.Show("Good choice");
             };
 
+            ExitButton.Hide();
+
         }
 
         private void Tournament_RoundFinishedEvent(object sender, EventArgs e)
@@ -521,6 +523,8 @@ namespace SchemeTournament
                         State4_P1.BackColor = Color.Silver;
                         State4_P2.BackColor = Color.Gold;
                     }
+
+                    ExitButton.Show();
                 };
             }
             catch
@@ -533,7 +537,6 @@ namespace SchemeTournament
         {
             if (e.Button == MouseButtons.Right)
             {
-
                 return;
             }
             Start = e.Location;
@@ -558,6 +561,7 @@ namespace SchemeTournament
                 this.ThirdState.Size = new System.Drawing.Size(298, 340);
                 return;
             }
+           
             var x = e.Location.X - Start.X;
             var y = e.Location.Y - Start.Y;
 
@@ -577,6 +581,11 @@ namespace SchemeTournament
                 FourthState.Left = FourthState.Left + x;
 
           
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
