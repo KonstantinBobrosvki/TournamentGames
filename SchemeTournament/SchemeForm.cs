@@ -335,5 +335,55 @@ namespace SchemeTournament
                 MessageBox.Show("Mach is not created already !");
             }
         }
+        Point Start;
+        private void SchemeForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                return;
+            }
+            Start = e.Location;
+            
+        }
+
+        private void SchemeForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(e.Button==MouseButtons.Right)
+            {
+                FirstState.Location = new System.Drawing.Point(12, 3);
+                this.FirstState.Name = "FirstState";
+                this.FirstState.Size = new System.Drawing.Size(319, 1046);
+                this.SecondState.Location = new System.Drawing.Point(404, 179);
+                this.SecondState.Name = "SecondState";
+                this.SecondState.Size = new System.Drawing.Size(336, 693);
+                this.FourthState.Location = new System.Drawing.Point(1191, 420);
+                this.FourthState.Name = "FourthState";
+                this.FourthState.Size = new System.Drawing.Size(350, 212);
+                this.ThirdState.Location = new System.Drawing.Point(807, 357);
+                this.ThirdState.Name = "ThirdState";
+                this.ThirdState.Size = new System.Drawing.Size(298, 340);
+                return;
+            }
+            var x = e.Location.X - Start.X;
+            var y = e.Location.Y - Start.Y;
+
+          
+
+                FirstState.Top = FirstState.Top + y;
+                SecondState.Top = SecondState.Top + y ;
+                ThirdState.Top = ThirdState.Top + y;
+                FourthState.Top = FourthState.Top + y;
+
+          
+
+
+                FirstState.Left = FirstState.Left + x;
+                SecondState.Left = SecondState.Left + x;
+                ThirdState.Left = ThirdState.Left + x;
+                FourthState.Left = FourthState.Left + x;
+
+          
+        }
     }
 }

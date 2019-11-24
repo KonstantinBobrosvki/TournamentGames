@@ -36,12 +36,8 @@ namespace Pong
         }
         public Ball(Point p):base(p)
         {
-            var image = new Bitmap(80, 80);
-            Graphics g = Graphics.FromImage(image);
-            g.FillEllipse(new SolidBrush(Color.FromArgb(255, 255, 255)), 0, 0, 80, 80);
-
-         
-
+            var image = new Bitmap(Resources.Resources.green_tennis_ball.ToBitmap(), new Size(80, 80));
+            image.MakeTransparent();
             Random random = new Random();
             var temp = random.Next(-15, 15);
             while (temp > -8 && temp < 8)

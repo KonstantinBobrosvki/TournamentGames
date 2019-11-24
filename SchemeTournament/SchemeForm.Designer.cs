@@ -916,6 +916,8 @@
             this.Name = "SchemeForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SchemeForm_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SchemeForm_MouseUp);
             this.FirstState.ResumeLayout(false);
             this.FirstState.PerformLayout();
             this.SecondState.ResumeLayout(false);
