@@ -525,9 +525,9 @@ namespace RangeList
                 Controls.Add(pointsBox);
                 Controls.Add(checkBox);
 
-                var temp = LinkedItems(Players.Count - 2).Item2;
+                var temp = LinkedItems(1).Item2;
                 NewPlayerButton.Location = new Point(nameBox.Location.X,
-                   textBox3.Location.Y);
+                   temp.Location.Y);
 
 
             }
@@ -593,7 +593,8 @@ namespace RangeList
 
         private void Sort()
         {
-            
+            //For future
+            return;
             var point = new List<Point[]>(Players.Count);
             var scores = new Dictionary<int,int>();
             for (int i = 0; i < Players.Count; i++)

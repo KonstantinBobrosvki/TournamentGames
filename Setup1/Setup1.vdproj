@@ -34,12 +34,6 @@
         "Entry"
         {
         "MsmKey" = "8:_22A305461B163ED0A63E2E5FBE79B792"
-        "OwnerKey" = "8:_0ACE5CB721577061FCC4915B581BAF5B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_22A305461B163ED0A63E2E5FBE79B792"
         "OwnerKey" = "8:_0D182D73251F8BBDE613801A524BCA52"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -47,6 +41,12 @@
         {
         "MsmKey" = "8:_22A305461B163ED0A63E2E5FBE79B792"
         "OwnerKey" = "8:_DEA70723394A4745A422F0C423945F03"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_22A305461B163ED0A63E2E5FBE79B792"
+        "OwnerKey" = "8:_0ACE5CB721577061FCC4915B581BAF5B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -63,8 +63,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0D182D73251F8BBDE613801A524BCA52"
+        "MsmKey" = "8:_F184408FED8A4D5FAE0594FD9EAC5F82"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -83,6 +83,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0ACE5CB721577061FCC4915B581BAF5B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0D182D73251F8BBDE613801A524BCA52"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -109,6 +115,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -125,6 +139,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -276,6 +298,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F184408FED8A4D5FAE0594FD9EAC5F82"
+            {
+            "SourcePath" = "8:..\\RangeList\\Resources\\3700423-ball-competition-racket-sportive-sports-tennis_108789.ico"
+            "TargetName" = "8:3700423-ball-competition-racket-sportive-sports-tennis_108789.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_B6B7BA69971846D387215F7819F1E954"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -457,7 +499,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CB792825358547BBBFCAD161784597F8"
             {
-            "Name" = "8:Open me faggot"
+            "Name" = "8:Tournaments games"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -466,7 +508,7 @@
             "Target" = "8:_DEA70723394A4745A422F0C423945F03"
             "Folder" = "8:_0B55E9E2368141F88A50E604E1811120"
             "WorkingFolder" = "8:_B6B7BA69971846D387215F7819F1E954"
-            "Icon" = "8:"
+            "Icon" = "8:_F184408FED8A4D5FAE0594FD9EAC5F82"
             "Feature" = "8:"
             }
         }
@@ -607,7 +649,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_656565FD4A964AECB29C93FD0986E04C"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Подтвърждение"
+                    "DisplayName" = "8:Подтверждение установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -629,7 +671,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_858E82F2165C4267891F5C6301063D3D"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка за инсталация"
+                    "DisplayName" = "8:Папка установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -651,7 +693,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F3ACE148000547289E476FA549F8E835"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Здравейте!"
+                    "DisplayName" = "8:Добро пожаловать!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -714,7 +756,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E2746B253D5E4EBB9BE199CF28DA3A89"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Изпълнение"
+                    "DisplayName" = "8:Ход выполнения"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -758,7 +800,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_58842CF948984B939F17EEF61755E4FA"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Подтвърждение за инсталация"
+                    "DisplayName" = "8:Подтверждение установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -780,7 +822,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5E95517B42B8453EB876B0E0CC90D281"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Здравейте!"
+                    "DisplayName" = "8:Добро пожаловать!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -828,7 +870,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_EAD35BFDE22D44C8AF66A849C88A1D5D"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка за инсталация"
+                    "DisplayName" = "8:Папка установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
