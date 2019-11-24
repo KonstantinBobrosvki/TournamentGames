@@ -174,11 +174,16 @@ namespace RangeList
                 using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\peoples.dat", FileMode.Open, FileAccess.ReadWrite))
                 {
                    Players= formatter.Deserialize(fs) as List<Player>;
+                    for (int i = 0; i < Players.Count; i++)
+                    {
+                        new Player("GG");
+                    }
                 }
-                if (Players.Count > 32)
+                if (Players.Count >= 32)
                     GenerateNewBoxes(32);
                 else
                 {
+                    var temp = LinkedItems(Players.Count);
                     NewPlayerButton.Location=LinkedItems(Players.Count).Item2.Location;
                     for (int i = Players.Count; i < 32; i++)
                     {
@@ -202,7 +207,6 @@ namespace RangeList
 
                 FillRandomNames();
             }
-
 
         }
 
@@ -410,6 +414,8 @@ namespace RangeList
 
         private void NewPlayerButton_Click(object sender, EventArgs e)
         {
+            
+
            if(Players.Count<25)
            {
 
