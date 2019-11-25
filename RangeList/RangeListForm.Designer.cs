@@ -96,7 +96,6 @@
             this.textBox62 = new System.Windows.Forms.TextBox();
             this.textBox63 = new System.Windows.Forms.TextBox();
             this.textBox64 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -652,16 +651,6 @@
             this.textBox64.TabIndex = 70;
             this.textBox64.Text = "0";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 329);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(402, 20);
-            this.label6.TabIndex = 72;
-            this.label6.Text = "Only players that are checked will play in the tournament";
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -975,7 +964,7 @@
             this.NewPlayerButton.Name = "NewPlayerButton";
             this.NewPlayerButton.Size = new System.Drawing.Size(119, 20);
             this.NewPlayerButton.TabIndex = 105;
-            this.NewPlayerButton.Text = "Add new player";
+            this.NewPlayerButton.Text = "Добави играч";
             this.NewPlayerButton.UseVisualStyleBackColor = false;
             this.NewPlayerButton.Click += new System.EventHandler(this.NewPlayerButton_Click);
             // 
@@ -983,12 +972,13 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 83);
+            this.label7.Location = new System.Drawing.Point(8, 427);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(369, 80);
+            this.label7.Size = new System.Drawing.Size(413, 80);
             this.label7.TabIndex = 106;
-            this.label7.Text = "Here you can see list of players that can play in the \r\ntournament and their poin" +
-    "ts.\r\n\r\n ";
+            this.label7.Text = "Това е началната стараница на нашето приложение.\r\nТук е класирането съставено от " +
+    "всички играчи. \r\nТе са подредени по точки. За да стартирате турнир\r\n трябва да с" +
+    "те избрали 16 играча.";
             // 
             // RangeListForm
             // 
@@ -1029,7 +1019,6 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox64);
             this.Controls.Add(this.textBox63);
             this.Controls.Add(this.textBox62);
@@ -1183,7 +1172,6 @@
         public System.Windows.Forms.TextBox textBox62;
         public System.Windows.Forms.TextBox textBox63;
         public System.Windows.Forms.TextBox textBox64;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;

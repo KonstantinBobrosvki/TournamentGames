@@ -68,7 +68,7 @@ namespace RangeList
 
 
 
-                toolTip.SetToolTip(deletebut, "Delete player");
+                toolTip.SetToolTip(deletebut, "Изтрий играч");
 
                 deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
                 deletebut.Size = new Size(20, 20);
@@ -224,7 +224,7 @@ namespace RangeList
         {
             if(Players.Count==16)
             {
-                MessageBox.Show("Minimum players are 16");
+                MessageBox.Show("Минималния брой на играчи е 16!");
                 return;
             }
 
@@ -323,7 +323,7 @@ namespace RangeList
             List<Player> pl = new List<Player>(16);
             if (c.Count != 16)
             {
-                MessageBox.Show("Players must be 16");
+                MessageBox.Show("Играчите трябва да са 16");
                 return;
             }
             for (int i = 0; i < 16; i++)
@@ -397,11 +397,11 @@ namespace RangeList
         {
             if (e.KeyCode != Keys.Escape)
                 return;
-            var res = MessageBox.Show("Do you want to exit app", "Exit window", MessageBoxButtons.YesNo);
+            var res = MessageBox.Show("Сигурни ли сте че искате да излезете ?", "Exit", MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
                 this.Close();
             else
-                MessageBox.Show("Good choice");
+                MessageBox.Show("Добър избор!");
         }
 
         private void RangeListForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -422,7 +422,7 @@ namespace RangeList
            if(Players.Count<25)
            {
 
-                Players.Add(new Player("Unnamed"));
+                Players.Add(new Player("Без име"));
                 int yForControls = NewPlayerButton.Location.Y;
 
                 var checkBox = new CheckBox() { Size = checkBox1.Size,
@@ -449,7 +449,7 @@ namespace RangeList
 
 
 
-                toolTip.SetToolTip(deletebut, "Delete player");
+                toolTip.SetToolTip(deletebut, "Изтрий играч");
 
                 deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
                 deletebut.Size = new Size(20, 20);
@@ -473,7 +473,7 @@ namespace RangeList
             else if(Players.Count == 25)
             {
                
-                Players.Add(new Player("Unnamed"));
+                Players.Add(new Player("Без име"));
                 int yForControls = NewPlayerButton.Location.Y;
 
                 var checkBox = new CheckBox() { Size = checkBox1.Size,
@@ -510,7 +510,7 @@ namespace RangeList
 
 
 
-                toolTip.SetToolTip(deletebut, "Delete player");
+                toolTip.SetToolTip(deletebut, "Изтрий играч");
 
                 deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
                 deletebut.Size = new Size(20, 20);
@@ -533,7 +533,7 @@ namespace RangeList
             }
            else if(Players.Count<49)
             {
-                Players.Add(new Player("Unnamed"));
+                Players.Add(new Player("Без име"));
                 int yForControls = NewPlayerButton.Location.Y;
                 var textBox1 = LinkedItems(25).Item2;
                 var textBox2 = LinkedItems(25).Item3;
@@ -565,7 +565,7 @@ namespace RangeList
 
 
 
-                toolTip.SetToolTip(deletebut, "Delete player");
+                toolTip.SetToolTip(deletebut, "Изтрий играч");
 
                 deletebut.Location = new Point(pointsBox.Location.X + pointsBox.Width + 30, pointsBox.Location.Y);
                 deletebut.Size = new Size(20, 20);
@@ -586,7 +586,7 @@ namespace RangeList
             }
            else
             {
-                MessageBox.Show("Max are 49 players");
+                MessageBox.Show("Максималния брой на играчи е 49");
                 return;
             }
         }

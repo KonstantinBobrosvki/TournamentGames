@@ -72,6 +72,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RangeListForm.resx">
+      <DependentUpon>RangeListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resourcses.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resourcses.Designer.cs</LastGenOutput>

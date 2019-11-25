@@ -39,7 +39,7 @@ namespace SchemeTournament
                         {
                          
                             it.Size = new Size( 79, item.Height);
-                            it.Text = "Player";
+                            it.Text = "Играч";
                         }
                     }
                 }
@@ -58,11 +58,11 @@ namespace SchemeTournament
 
                 if (e.KeyCode != Keys.Escape)
                     return;
-                var res = MessageBox.Show("Do you want to abort tournament", "Exit window", MessageBoxButtons.YesNo);
+                var res = MessageBox.Show("Сигурни ли сте че искате да излезете ?", "Exit", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                     this.Close();
                 else
-                    MessageBox.Show("Good choice");
+                    MessageBox.Show("Добър избор!");
             };
 
             ExitButton.Hide();
@@ -111,7 +111,7 @@ namespace SchemeTournament
             }
             FirstState.Location = new System.Drawing.Point(12, 3);
             this.FirstState.Name = "FirstState";
-            this.FirstState.Size = new System.Drawing.Size(319, 1046);
+            this.FirstState.Size = new System.Drawing.Size(319, 1050);
             this.SecondState.Location = new System.Drawing.Point(404, 179);
             this.SecondState.Name = "SecondState";
             this.SecondState.Size = new System.Drawing.Size(336, 693);
@@ -365,7 +365,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
 
@@ -392,7 +392,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
 
@@ -419,7 +419,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
 
@@ -446,7 +446,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
        
@@ -473,7 +473,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
 
@@ -500,7 +500,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
 
@@ -529,7 +529,7 @@ namespace SchemeTournament
             }
             catch
             {
-                MessageBox.Show("Mach is not created already !");
+                MessageBox.Show("Мачът не съществува!");
             }
         }
         Point Start;

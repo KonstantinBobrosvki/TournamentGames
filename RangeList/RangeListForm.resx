@@ -117,8 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Тук е мястото на което се провежда турнира. След като започнете игра чрез бутоните ще витдите стандартната игра 
-                               "Понг" левия играч се контролира с "W,S", а десния с стрелка нагоре и надолу. </value>
-  </data>
 </root>
